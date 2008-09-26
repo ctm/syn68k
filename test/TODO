@@ -1,0 +1,8 @@
+1) Test funky addressing modes.
+2) Test abs.w addressing mode.  We don't test it now because we don't
+   know that the pointer to the test data will fit in two bytes (in fact,
+   it won't).
+3) Check undefined behavior for mull when dh and di are the same register.
+4) unlk a7 wedges the 68040, so we aren't testing it.  When we run the test
+   suite on a 68020, we may want to put it back in.
+5) Test move16

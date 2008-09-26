@@ -1,0 +1,18 @@
+CC = gcc -m486
+CFLAGS = -O2 -g -Wall -I$(topdir)/include $(LOCAL_CFLAGS)
+
+LIB_CC = i486-pc-cygwin32-gcc -m486 -I/usr/local/i486-pc-cygwin32/include/mingw32
+LIB_CFLAGS = -O6 -finline-functions -g -Wall -I$(topdir)/include $(LOCAL_CFLAGS)
+
+OFILE_DIR = obj/i486-pc-new-cygwin32
+LIBDIR = $(topdir)/lib/i486-pc-new-cygwin32
+LIBS =
+HOSTCPU = i486-pc-new-cygwin32
+
+AR = ar
+AS = i486-pc-cygwin32-gcc -x assembler
+RANLIB = i486-pc-cygwin32-ranlib
+
+CLEANUP = ./i486-cleanup.pl
+OPTIMIZE = ./i486-optimize.pl
+SYN68K_CFLAGS = -O2 -fomit-frame-pointer

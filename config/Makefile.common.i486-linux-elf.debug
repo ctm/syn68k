@@ -1,0 +1,17 @@
+CC = gcc
+CFLAGS = -g -Wall -I$(topdir)/include $(LOCAL_CFLAGS)
+
+LIB_CC = gcc
+LIB_CFLAGS = -g -Wall -I$(topdir)/include $(LOCAL_CFLAGS) -D__CHECKER__
+
+OFILE_DIR = obj/i486-linux-elf-debug
+LIBDIR = $(topdir)/lib/i486-linux-elf-debug
+LIBS =
+HOSTCPU = i486-linux-elf-debug
+
+RANLIB = /usr/bin/ranlib
+
+OPTIMIZE = ./i486-optimize.pl
+CLEANUP = ./i486-cleanup.pl
+LDFLAGS = -Lhost-native
+SYN68K_CFLAGS = $(LIB_CFLAGS)

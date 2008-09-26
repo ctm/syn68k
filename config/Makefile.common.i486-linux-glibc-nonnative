@@ -1,0 +1,20 @@
+CC = gcc
+CFLAGS = -O2 -g -Wall -I$(topdir)/include $(LOCAL_CFLAGS) -D__CHECKER__ -DNONNATIVE
+
+LIB_CC = gcc
+LIB_CFLAGS = -g -Wall -I$(topdir)/include $(LOCAL_CFLAGS) -D__CHECKER__ -DNONNATIVE
+
+OFILE_DIR = obj/i486-linux-glibc-nonnative
+LIBDIR = $(topdir)/lib/i486-linux-glibc-nonnative
+LIBS =
+HOSTCPU = i486-linux-glibc
+
+RANLIB = /usr/bin/ranlib
+
+# OPTIMIZE = ./i486-optimize.pl
+CLEANUP = ./i486-cleanup.pl
+# LDFLAGS = -Lhost-native
+SYN68K_CFLAGS = -DNONNATIVE -g -D__CHECKER__
+
+NO_NATIVE = TRUE
+

@@ -1,0 +1,2 @@
+mem == 0x7F002000
+Testing cmp_dreg...2000...4000...6000...8000...10000...done.	pre_crc:0x65FB, mem_crc:0x0000, reg_crc:0xF511, cc_crc:0x6E0D

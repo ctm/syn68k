@@ -1,0 +1,18 @@
+CC = gcc -m486
+CFLAGS = -O2 -g -Wall -I$(topdir)/include $(LOCAL_CFLAGS)
+
+LIB_CC = i586-cygwin32-gcc -m486
+LIB_CFLAGS = -O2 -g -Wall -I$(topdir)/include $(LOCAL_CFLAGS)
+
+OFILE_DIR = obj/i586-cygwin32
+LIBDIR = $(topdir)/lib/i586-cygwin32
+LIBS =
+HOSTCPU = i586-cygwin32
+
+AR = ar
+AS = i586-cygwin32-gcc -x assembler
+RANLIB = i586-cygwin32-ranlib
+
+CLEANUP = ./i486-cleanup.pl
+OPTIMIZE = ./i486-optimize.pl
+SYN68K_CFLAGS = -O2 -fomit-frame-pointer

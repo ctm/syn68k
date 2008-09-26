@@ -1,0 +1,6 @@
+2) Make generate_amode_fetch() in translate.c have the parameter m68k_operand
+   be a syn68k_addr_t instead of a uint16 *, and then ditch all of the
+   US_TO_SYN68K's that become superfluous.
+
+
+PERFORMANCE TWEAKS:

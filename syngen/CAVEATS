@@ -1,0 +1,16 @@
+1) CC bits may not be valid during an interrupt
+2) We don't support supervisor mode properly
+	a) We have only one SP (no MSP, ISP, USP)
+	b) You cannot leave supervisor mode
+3) The interrupt stack space is in a static array which may not look
+   like a valid address from the Mac's point of view.
+4) Interrupt/trap handlers we write are responsible for performing their
+   own RTE.
+5) Flushing the cache during an interrupt can have bad effects; the compiled
+   code being interpreted would get destroyed, and on return back to the
+   compiled code bad things would happen.
+6) Expanding multiple CC variants of the same opcode won't work properly.
+   It will only expand the piecewise intersections of the specified addressing
+   modes.  Instead, it should go through and do all the intersections, and then
+   run through each variant's expansion pattern with "----------------" as the
+   expansion pattern for all other variants.

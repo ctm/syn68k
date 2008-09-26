@@ -1,0 +1,55 @@
+6) Fold amodes 6 and 7 together, ignoring the reg field of the amode.
+   Some amode 7 (abs short, abs long, imm) should not be folded if the
+   amode as a whole is being expanded.
+7) Grab unexpanded regs at the beginning of the case?  Saves code iff
+   the reg is referred to more than once.  Watch out for lvalues and
+   aliases...
+14) Table builder should be more aggressive about using OpcodeMappingInfo
+    sequences from similar instructions
+20) Look into changing beq et al:
+	(if (not ccnz)
+	    (assign code (deref "uint16 **" code 1))
+	    (assign code (deref "uint16 **" code 0)))))
+    To:
+        (assign code (deref "uint16 **" code (not ccnz)))
+22) Handle assigns to dollar registers not in the first instruction word
+    (happens now for bitfields, cas2...)
+23) Don't generate switch to correct for postinc/predec when that amode isn't
+    possible.
+25) Right now VBR points to a static array in trap.c; make it point
+    to real m68k memory.
+27) Rewrite movemw/moveml #ifdef'd for the case where our regs are in an
+    array.  It should be possible to write it as a nice tight loop.
+33) Expanding two different cc variants of the same instruction won't work.
+    Instead, it will only expand bit patterns in the intersection of the two
+    bits_to_expand's as it marches along the list, or something like that.
+36) Add a new operand type for 3 bit numbers where 0 is really 8.  These
+    are common in instructions that specify small constants, and this should
+    let us cut down the number of synthetic opcodes we need, thus
+    reducing the size of 68k.scm and syn68k.c.
+37) Rewrite parts of byteorder.c to better handle assigning expressions of
+    unknown size to memory.  As it is, it doesn't know what size of byte
+    swapping macro to use when, for example, doing:
+	(assign $1.muw (| (<> ccc 0) (<> ccx 0)))
+    The current heuristic is to swap based on the size of the smaller of the
+    LHS and RHS.  This doesn't work in the above example.  For now, I've
+    worked around this in 68k.scm by inserting native order temp variables of
+    the appropriate size, like:
+	(assign tmp1.uw (| (<> ccc 0) (<> ccx 0)))
+	(assign $1.muw tmp1.uw)
+    Here it is straightforward for byteorder.c to figure out what size
+    the data to be swapped (tmp1.uw) is.  I think this only comes up
+    in the ccr/sr instructions.
+38) Test move16
+39) gcc isn't clever about:
+        (d0.ub.n = (*(uint8 *) CLEAN ((a0.ul.n - 1) )) ) ;
+        a0.ul.n -= 1; 
+    It computes a0.ul.n - 1 twice!  It would be nice to replace this
+    with:
+	(d0.ub.n = (*(uint8 *) CLEAN ((--a0.ul.n))));
+    but it's tricky to do this because, if the dereference of the
+    predecremented a0 is used more than once, we want to avoid decrementing
+    it more than once.
+40) Separate arrays for the two fields of amode_cleanup_info might be
+    faster on the 486; if we are clever, we can possibly get the compiler to
+    use the "xlatb" instruction, although perhaps this isn't a win.

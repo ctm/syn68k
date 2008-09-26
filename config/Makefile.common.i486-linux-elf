@@ -1,0 +1,17 @@
+CC = gcc
+CFLAGS = -O2 -g -Wall -I$(topdir)/include $(LOCAL_CFLAGS)
+
+LIB_CC = gcc
+LIB_CFLAGS = -O2 -g -Wall -I$(topdir)/include $(LOCAL_CFLAGS)
+
+OFILE_DIR = obj/i486-linux-elf
+LIBDIR = $(topdir)/lib/i486-linux-elf
+LIBS =
+HOSTCPU = i486-linux-elf
+
+RANLIB = /usr/bin/ranlib
+
+OPTIMIZE = ./i486-optimize.pl
+CLEANUP = ./i486-cleanup.pl
+LDFLAGS = -Lhost-native
+SYN68K_CFLAGS = -O2 -fomit-frame-pointer

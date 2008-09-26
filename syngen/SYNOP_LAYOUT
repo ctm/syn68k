@@ -1,0 +1,16 @@
+Synthetic opcodes are composed of a 16 bit opcode followed by
+operands.  All operands will be aligned appropriately.  Operands taking 16 or
+fewer bits in the 68k instruction stream will NEVER be extended to 32 bits
+in the synthetic stream.
+
+If this instruction ends a block and has one or more known destination
+blocks, the synthetic opcode is immediately followed by pointers to
+the synthetic code in those blocks.
+
+Next come any 32 bit operands not mentioned in the 68k description
+file (eg, return addresses for jsrs).
+
+Next come all 32 bit operands explicitly mentioned in the 68k
+description file, in "field number" order (eg, $2.u precedes $4.s, etc.)
+
+Finally we have all 16 bit operands, also in "field number" order.

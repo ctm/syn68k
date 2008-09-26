@@ -1,0 +1,64 @@
+eax	l	reg_a_hh reg_a_hl reg_a_lh reg_a_ll
+eax	w	reg_a_lh reg_a_ll
+eax	b	reg_a_ll
+ax	l	reg_a_hh reg_a_hl reg_a_lh reg_a_ll
+ax	w	reg_a_lh reg_a_ll
+ax	b	reg_a_ll
+ah	l	reg_a_hh reg_a_hl reg_a_lh reg_a_ll
+ah	w	reg_a_lh reg_a_ll
+ah	b	reg_a_lh
+al	l	reg_a_hh reg_a_hl reg_a_lh reg_a_ll
+al	w	reg_a_lh reg_a_ll
+al	b	reg_a_ll
+ebx	l	reg_b_hh reg_b_hl reg_b_lh reg_b_ll
+ebx	w	reg_b_lh reg_b_ll
+ebx	b	reg_b_ll
+bx	l	reg_b_hh reg_b_hl reg_b_lh reg_b_ll
+bx	w	reg_b_lh reg_b_ll
+bx	b	reg_b_ll
+bh	l	reg_b_hh reg_b_hl reg_b_lh reg_b_ll
+bh	w	reg_b_lh reg_b_ll
+bh	b	reg_b_lh
+bl	l	reg_b_hh reg_b_hl reg_b_lh reg_b_ll
+bl	w	reg_b_lh reg_b_ll
+bl	b	reg_b_ll
+ecx	l	reg_c_hh reg_c_hl reg_c_lh reg_c_ll
+ecx	w	reg_c_lh reg_c_ll
+ecx	b	reg_c_ll
+cx	l	reg_c_hh reg_c_hl reg_c_lh reg_c_ll
+cx	w	reg_c_lh reg_c_ll
+cx	b	reg_c_ll
+ch	l	reg_c_hh reg_c_hl reg_c_lh reg_c_ll
+ch	w	reg_c_lh reg_c_ll
+ch	b	reg_c_lh
+cl	l	reg_c_hh reg_c_hl reg_c_lh reg_c_ll
+cl	w	reg_c_lh reg_c_ll
+cl	b	reg_c_ll
+edx	l	reg_d_hh reg_d_hl reg_d_lh reg_d_ll
+edx	w	reg_d_lh reg_d_ll
+edx	b	reg_d_ll
+dx	l	reg_d_hh reg_d_hl reg_d_lh reg_d_ll
+dx	w	reg_d_lh reg_d_ll
+dx	b	reg_d_ll
+dh	l	reg_d_hh reg_d_hl reg_d_lh reg_d_ll
+dh	w	reg_d_lh reg_d_ll
+dh	b	reg_d_lh
+dl	l	reg_d_hh reg_d_hl reg_d_lh reg_d_ll
+dl	w	reg_d_lh reg_d_ll
+dl	b	reg_d_ll
+esi	l	reg_si_hh reg_si_hl reg_si_lh reg_si_ll
+esi	w	reg_si_lh reg_si_ll
+si	l	reg_si_hh reg_si_hl reg_si_lh reg_si_ll
+si	w	reg_si_lh reg_si_ll
+edi	l	reg_di_hh reg_di_hl reg_di_lh reg_di_ll
+edi	w	reg_di_lh reg_di_ll
+di	l	reg_di_hh reg_di_hl reg_di_lh reg_di_ll
+di	w	reg_di_lh reg_di_ll
+ebp	l	reg_bp_hh reg_bp_hl reg_bp_lh reg_bp_ll
+ebp	w	reg_bp_lh reg_bp_ll
+bp	l	reg_bp_hh reg_bp_hl reg_bp_lh reg_bp_ll
+bp	w	reg_bp_lh reg_bp_ll
+esp	l	reg_sp_hh reg_sp_hl reg_sp_lh reg_sp_ll
+esp	w	reg_sp_lh reg_sp_ll
+sp	l	reg_sp_hh reg_sp_hl reg_sp_lh reg_sp_ll
+sp	w	reg_sp_lh reg_sp_ll

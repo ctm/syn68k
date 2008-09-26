@@ -1,0 +1,2 @@
+directory ../syngen
+directory ../runtime

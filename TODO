@@ -1,0 +1,41 @@
+$Id: TODO 77 2005-01-04 23:51:13Z ctm $
+
+	Make it so that we can install libsyn68k.a and the .h files
+
+	Make so we can build the various debug versions, non-native, etc.
+
+	Figure out exactly which variables Makefile.common.in sets, then
+	get rid of Makefile.common.in
+
+		see TODO.variables
+
+		figure out what to do concerning bswap
+
+	Look into what else from syn68k we can delete
+
+		Makefile.common.in
+
+		config
+
+	Make sure make clean really does a make clean
+
+	Make sure we get proper dependencies (if possible)
+
+	make sure syn68k builds on a powerpc (either the
+	old yellow dog linux on sybil, or on Mac OS X on sybil)
+
+		non-native
+
+	figure out *exactly* which options should be available
+	via configure
+
+	clean the junk out of test (mostly old test results)
+
+	build some semi-canonical test results to use for
+	comparing on other platforms
+
+	write-up what is needed to do testing on a real m68k
+
+	need a .spec file so we can build syn68k and syn68k-devel
+	RPMS
+

@@ -1,0 +1,42 @@
+$Id: TODO.variables 55 2004-12-16 22:00:22Z ctm $
+
+
+
+These are some rough notes associated with Makefile.common.  These notes should
+go away after syn68k is fully transitioned to using the GNU build system
+
+NOTE: Need to know the difference between the cross-compiler and the
+      local compiler
+
+AR
+AS
+RANLIB
+
+CC		should probably be CC_FOR_BUILD
+CFLAGS		should probably be CFLAGS_FOR_BUILD
+
+CLEANUP	i486-cleanup.pl, if we're x86 and we don't have no-native set
+OPTIMIZE i486-optimize.pl, if we're x86 and we don't have no-native set
+
+HOSTCPU	UNUSED
+
+INCLUDE_DIR
+LDFLAGS
+LIBDIR
+LIBS
+
+LIB_CC		should probably be CC
+LIB_CFLAGS	should probably be LIB_CFLAGS
+
+NO_NATIVE
+OFILE_DIR
+
+SYN68K_CFLAGS
+SYN68K_TARGET
+
+host-native
+var_host
+var_host_os
+
+
+

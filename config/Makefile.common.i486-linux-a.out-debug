@@ -1,0 +1,23 @@
+# NOTE: we define __CHECKER__ so that we get a frame pointer and other
+# good stuff.  We're not actually using checker.  D'oh.
+CC = gcc
+CFLAGS = -O2 -g -Wall -I$(topdir)/include $(LOCAL_CFLAGS)
+
+LIB_CC = gcc -b i486-linuxaout
+LIB_CFLAGS = -g -I$(topdir)/include $(LOCAL_CFLAGS) -D__CHECKER__
+
+SYN68K_CFLAGS = $(LIB_CFLAGS) -O
+
+OFILE_DIR = obj/i486-linux-debug
+LIBDIR = $(topdir)/lib/i486-linux-debug
+LIBS =
+HOSTCPU = i486-linux-debug
+
+AR = ar
+RANLIB = ranlib
+
+# don't optimize syn68k.s when compiling with checker
+# OPTIMIZE = ./i486-optimize.pl
+CLEANUP = ./i486-cleanup.pl
+
+LDFLAGS = -Lhost-native

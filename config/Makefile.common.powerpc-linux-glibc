@@ -1,0 +1,21 @@
+# NOTE: we define __CHECKER__ so that we get a frame pointer and other
+# good stuff.  We're not actually using checker.  D'oh.
+CC = gcc
+CFLAGS = -O2 -g -Wall -I$(topdir)/include $(LOCAL_CFLAGS)
+
+LIB_CC = gcc
+LIB_CFLAGS = -O2 -g -Wall -I$(topdir)/include $(LOCAL_CFLAGS)
+
+OFILE_DIR = obj/powerpc-linux-glibc
+LIBDIR = $(topdir)/lib/powerpc-linux-glibc
+LIBS =
+HOSTCPU = powerpc-linux-glibc
+
+RANLIB = /usr/bin/ranlib
+
+# OPTIMIZE = ./powerpc-optimize.pl
+# CLEANUP = ./powerpc-cleanup.pl
+# LDFLAGS = -Lhost-native
+SYN68K_CFLAGS = $(LIB_CFLAGS) -O2 -fomit-frame-pointer
+
+NO_NATIVE = TRUE

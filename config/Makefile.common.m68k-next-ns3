@@ -1,0 +1,13 @@
+CC = gcc
+CFLAGS = -O2 -g -Wall -I$(topdir)/include $(LOCAL_CFLAGS)
+
+LIB_CC = gcc
+LIB_CFLAGS = -O2 -g -Wall -I$(topdir)/include $(LOCAL_CFLAGS)
+
+OFILE_DIR = obj/m68k-next-ns3
+LIBDIR = $(topdir)/lib/m68k-next-ns3
+LIBS =
+
+RANLIB = /bin/ranlib -c
+
+HOSTCPU = m68k-next-ns3

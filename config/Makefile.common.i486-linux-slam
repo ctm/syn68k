@@ -1,0 +1,25 @@
+CC = gcc
+CFLAGS = -O2 -g -Wall -I$(topdir)/include $(LOCAL_CFLAGS)
+
+LIB_CC = checkergcc
+LIB_CFLAGS = -g -I$(topdir)/include $(LOCAL_CFLAGS)
+
+SYN68K_FLAGS = $(LIB_CFLAGS)
+
+OFILE_DIR = obj/i486-linux
+LIBDIR = $(topdir)/lib/i486-linux
+LIBS =
+HOSTCPU = i486-linux
+
+AR = /usr/local/lib/checker/ar
+RANLIB = /usr/local/lib/checker/ranlib
+
+# don't optimize syn68k.s when compiling with checker
+# OPTIMIZE = ./i486-optimize.pl
+CLEANUP = ./i486-cleanup.pl
+
+LDFLAGS = -Lhost-native
+SYN68K_CFLAGS =
+
+
+

@@ -1,0 +1,7 @@
+CC = cc
+OFILE_DIR = obj/alpha
+LIBDIR = ../lib/alpha
+LIBS =
+HOSTCPU = alpha
+RANLIB = /bin/ranlib
+LDFLAGS = -taso

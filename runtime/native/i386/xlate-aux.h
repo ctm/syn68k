@@ -1,0 +1,138 @@
+#ifndef _xlate_aux_h_
+#define _xlate_aux_h_
+
+#ifdef GENERATE_NATIVE_CODE
+
+extern const guest_code_descriptor_t xlate_cmpmb_postinc_postinc_1_0;
+extern const guest_code_descriptor_t xlate_cmpmw_postinc_postinc_1_0;
+extern const guest_code_descriptor_t xlate_cmpml_postinc_postinc_1_0;
+
+extern const guest_code_descriptor_t xlate_bclr_imm_reg_1_0;
+extern const guest_code_descriptor_t xlate_bset_imm_reg_1_0;
+extern const guest_code_descriptor_t xlate_bchg_imm_reg_1_0;
+extern const guest_code_descriptor_t xlate_btst_imm_reg_1_0;
+
+extern const guest_code_descriptor_t xlate_bcc;
+extern const guest_code_descriptor_t xlate_bcs;
+extern const guest_code_descriptor_t xlate_beq;
+extern const guest_code_descriptor_t xlate_bge;
+extern const guest_code_descriptor_t xlate_bgt;
+extern const guest_code_descriptor_t xlate_bhi;
+extern const guest_code_descriptor_t xlate_ble;
+extern const guest_code_descriptor_t xlate_bls;
+extern const guest_code_descriptor_t xlate_blt;
+extern const guest_code_descriptor_t xlate_bmi;
+extern const guest_code_descriptor_t xlate_bne;
+extern const guest_code_descriptor_t xlate_bpl;
+extern const guest_code_descriptor_t xlate_bvc;
+extern const guest_code_descriptor_t xlate_bvs;
+
+extern const guest_code_descriptor_t xlate_st_reg_0;
+extern const guest_code_descriptor_t xlate_sf_reg_0;
+extern const guest_code_descriptor_t xlate_scc_reg_0;
+extern const guest_code_descriptor_t xlate_scs_reg_0;
+extern const guest_code_descriptor_t xlate_seq_reg_0;
+extern const guest_code_descriptor_t xlate_sge_reg_0;
+extern const guest_code_descriptor_t xlate_sgt_reg_0;
+extern const guest_code_descriptor_t xlate_shi_reg_0;
+extern const guest_code_descriptor_t xlate_sle_reg_0;
+extern const guest_code_descriptor_t xlate_sls_reg_0;
+extern const guest_code_descriptor_t xlate_slt_reg_0;
+extern const guest_code_descriptor_t xlate_smi_reg_0;
+extern const guest_code_descriptor_t xlate_sne_reg_0;
+extern const guest_code_descriptor_t xlate_spl_reg_0;
+extern const guest_code_descriptor_t xlate_svc_reg_0;
+extern const guest_code_descriptor_t xlate_svs_reg_0;
+
+extern const guest_code_descriptor_t xlate_jmp;
+
+extern const guest_code_descriptor_t xlate_dbra;
+
+extern const guest_code_descriptor_t xlate_swap;
+
+extern const guest_code_descriptor_t xlate_extbw;
+extern const guest_code_descriptor_t xlate_extbl;
+extern const guest_code_descriptor_t xlate_extwl;
+
+extern const guest_code_descriptor_t xlate_unlk;
+extern const guest_code_descriptor_t xlate_link;
+
+extern const guest_code_descriptor_t xlate_moveml_reg_predec_0_1;
+extern const guest_code_descriptor_t xlate_moveml_postinc_reg_0_1;
+
+extern const guest_code_descriptor_t xlate_pea_indoff;
+
+extern const guest_code_descriptor_t xlate_leal_indoff_areg_2_1_0;
+
+extern const guest_code_descriptor_t xlate_rts;
+
+extern const guest_code_descriptor_t xlate_mulsw_imm_reg_1_0;
+extern const guest_code_descriptor_t xlate_mulsw_abs_reg_1_0;
+extern const guest_code_descriptor_t xlate_mulsw_reg_reg_1_0;
+extern const guest_code_descriptor_t xlate_mulsw_ind_reg_1_0;
+extern const guest_code_descriptor_t xlate_mulsw_indoff_reg_2_1_0;
+extern const guest_code_descriptor_t xlate_mulsw_postinc_reg_1_0;
+extern const guest_code_descriptor_t xlate_mulsw_predec_reg_1_0;
+
+extern const guest_code_descriptor_t xlate_muluw_imm_reg_1_0;
+extern const guest_code_descriptor_t xlate_muluw_abs_reg_1_0;
+extern const guest_code_descriptor_t xlate_muluw_reg_reg_1_0;
+extern const guest_code_descriptor_t xlate_muluw_ind_reg_1_0;
+extern const guest_code_descriptor_t xlate_muluw_indoff_reg_2_1_0;
+extern const guest_code_descriptor_t xlate_muluw_postinc_reg_1_0;
+extern const guest_code_descriptor_t xlate_muluw_predec_reg_1_0;
+
+extern const guest_code_descriptor_t xlate_jsr_abs_0;
+extern const guest_code_descriptor_t xlate_jsr_pcd16_0;
+extern const guest_code_descriptor_t xlate_jsr_d16_0_1;
+extern const guest_code_descriptor_t xlate_bsr;
+
+extern const guest_code_descriptor_t xlate_moveb_imm_indix_1_0;
+extern const guest_code_descriptor_t xlate_movew_imm_indix_1_0;
+extern const guest_code_descriptor_t xlate_movel_imm_indix_1_0;
+
+extern const guest_code_descriptor_t xlate_moveb_zero_indix_0;
+extern const guest_code_descriptor_t xlate_movew_zero_indix_0;
+extern const guest_code_descriptor_t xlate_movel_zero_indix_0;
+
+extern const guest_code_descriptor_t xlate_cmpb_zero_indix_0;
+extern const guest_code_descriptor_t xlate_cmpw_zero_indix_0;
+extern const guest_code_descriptor_t xlate_cmpl_zero_indix_0;
+
+extern const guest_code_descriptor_t xlate_moveb_reg_indix_1_0;
+extern const guest_code_descriptor_t xlate_movew_reg_indix_1_0;
+extern const guest_code_descriptor_t xlate_movel_reg_indix_1_0;
+
+extern const guest_code_descriptor_t xlate_moveb_indix_reg_1_0;
+extern const guest_code_descriptor_t xlate_movew_indix_reg_1_0;
+extern const guest_code_descriptor_t xlate_movel_indix_reg_1_0;
+extern const guest_code_descriptor_t xlate_movel_indix_areg_1_0;
+
+extern const guest_code_descriptor_t xlate_cmpb_indix_reg_1_0;
+extern const guest_code_descriptor_t xlate_cmpw_indix_reg_1_0;
+extern const guest_code_descriptor_t xlate_cmpl_indix_reg_1_0;
+
+extern const guest_code_descriptor_t xlate_leal_indix_areg_1_0;
+
+extern const guest_code_descriptor_t xlate_addb_imm_indix_0_1;
+extern const guest_code_descriptor_t xlate_addw_imm_indix_0_1;
+extern const guest_code_descriptor_t xlate_addl_imm_indix_0_1;
+
+extern const guest_code_descriptor_t xlate_subb_imm_indix_0_1;
+extern const guest_code_descriptor_t xlate_subw_imm_indix_0_1;
+extern const guest_code_descriptor_t xlate_subl_imm_indix_0_1;
+
+extern const guest_code_descriptor_t xlate_divsw_imm_reg_1_0;
+extern const guest_code_descriptor_t xlate_divsw_reg_reg_1_0;
+extern const guest_code_descriptor_t xlate_divsw_ind_reg_1_0;
+extern const guest_code_descriptor_t xlate_divsw_predec_reg_1_0;
+extern const guest_code_descriptor_t xlate_divsw_postinc_reg_1_0;
+extern const guest_code_descriptor_t xlate_divsw_indoff_reg_2_1_0;
+
+extern const guest_code_descriptor_t xlate_addxb_reg_reg_1_0;
+extern const guest_code_descriptor_t xlate_addxw_reg_reg_1_0;
+extern const guest_code_descriptor_t xlate_addxl_reg_reg_1_0;
+
+#endif  /* GENERATE_NATIVE_CODE */
+
+#endif  /* !_xlate_aux_h_ */

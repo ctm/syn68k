@@ -1,0 +1,24 @@
+CC = gcc
+CFLAGS = -O2 -g -Wall -I$(topdir)/include $(LOCAL_CFLAGS)
+
+LIB_CC = gcc
+LIB_CFLAGS = -O2 -g -Wall -I$(topdir)/include $(LOCAL_CFLAGS)
+
+# NOTE: QUADALIGN DOESN'T WORK RIGHT NOW
+# LIB_CFLAGS = -g -Wall -I$(topdir)/include $(LOCAL_CFLAGS) -DQUADALIGN
+
+OFILE_DIR = obj/alpha-redhat-linux
+LIBDIR = $(topdir)/lib/alpha-redhat-linux
+LIBS =
+HOSTCPU = alpha-redhat-linux
+
+RANLIB = /usr/bin/ranlib
+
+# OPTIMIZE = ./i486-optimize.pl
+# CLEANUP = ./i486-cleanup.pl
+# LDFLAGS = -Lhost-native
+# LDFLAGS = -taso
+SYN68K_CFLAGS = $(LIB_CFLAGS) -O2 -fomit-frame-pointer
+# SYN68K_CFLAGS = -g -Wall -DQUADALIGN
+
+NO_NATIVE = TRUE
