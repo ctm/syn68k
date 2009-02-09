@@ -1,0 +1,6 @@
+*.[ao]
+config.mak
+autom4te.cache
+config.log
+config.status
+configure
