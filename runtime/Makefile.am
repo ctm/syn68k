@@ -16,7 +16,7 @@ LOCAL_CFLAGS = -DRUNTIME -Iinclude
 all: libsyn68k.a
 
 %.o:%.c
-	$(CC) $(CFLAGS) -c $(LOCAL_INCLUDES) $< -o $@
+	$(CC) $(DEFS) $(CFLAGS) -c $(LOCAL_INCLUDES) $< -o $@
 
 OBJS =	block.o diagnostics.o hash.o rangetree.o translate.o alloc.o	\
 	blockinfo.o trap.o destroyblock.o callback.o init.o interrupt.o	\

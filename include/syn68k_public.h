@@ -4,6 +4,10 @@
 /* 	$Id: syn68k_public.h 83 2005-05-12 02:33:41Z ctm $	 */
 
 #include <setjmp.h>
+ 
+#ifdef HAVE_CONFIG_H
+#include "config.h"
+#endif
 
 /* Define this for CPUs that require n byte data be aligned
  * on addresses congruent to zero modulo n.  The name "QUADALIGN"

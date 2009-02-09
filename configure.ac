@@ -4,7 +4,7 @@ AC_INIT(syn68k, 1.0, ctm@ardi.com)
 AM_INIT_AUTOMAKE
 
 AC_CONFIG_SRCDIR([syngen/main.c])
-AC_CONFIG_HEADERS([config.h])
+AC_CONFIG_HEADERS([include/config.h])
 
 # Checks for programs.
 AC_PROG_CC
