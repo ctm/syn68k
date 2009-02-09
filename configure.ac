@@ -4,7 +4,7 @@ AC_INIT(syn68k, 1.0, ctm@ardi.com)
 AM_INIT_AUTOMAKE
 
 AC_CONFIG_SRCDIR([syngen/main.c])
-AC_CONFIG_HEADER([config.h])
+AC_CONFIG_HEADERS([config.h])
 
 # Checks for programs.
 AC_PROG_CC
@@ -112,6 +112,8 @@ AC_C_CONST
 AC_C_INLINE
 AC_TYPE_SIZE_T
 AC_C_VOLATILE
+
+AC_C_BIGENDIAN([AC_DEFINE(BIGENDIAN, 1, [big])], [AC_DEFINE(LITTLEENDIAN, 1, [little])])
 
 # Checks for library functions.
 AC_FUNC_ALLOCA

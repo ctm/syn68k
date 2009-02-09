@@ -5,21 +5,6 @@
 
 #include <setjmp.h>
 
-/* Decide whether we are big or little endian here.  Add more machines as
- * they are supported.
- */
-#if !defined(BIGENDIAN) && !defined(LITTLEENDIAN)
-# if defined(__BIG_ENDIAN__) || defined(m68k) || defined(mc68000) \
-     || defined(sparc) || defined(powerpc) || defined (__ppc__)
-#  define BIGENDIAN  /* ARDI naming convention, why rock the boat? */
-# elif defined(__alpha) || defined(i860) || defined(vax) || defined(i386)
-#  define LITTLEENDIAN
-# else
-#  error "Unknown CPU type"
-# endif
-#endif
-
-
 /* Define this for CPUs that require n byte data be aligned
  * on addresses congruent to zero modulo n.  The name "QUADALIGN"
  * is another ARDI convention, why rock the boat?
