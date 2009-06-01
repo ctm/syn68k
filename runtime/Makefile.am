@@ -15,7 +15,7 @@ LOCAL_CFLAGS = -DRUNTIME -Iinclude
 
 all: libsyn68k.a
 
-%.o:%.c
+.c.o:
 	$(CC) $(CFLAGS) -c $(LOCAL_INCLUDES) $< -o $@
 
 OBJS =	block.o diagnostics.o hash.o rangetree.o translate.o alloc.o	\
@@ -73,6 +73,8 @@ syn68k.c mapindex.c mapinfo.c profileinfo.gz:	../syngen/syngen syn68k_header.c 6
 				../runtime/include/hash.h      \
 				../runtime/include/interrupt.h \
 				../runtime/include/trap.h
-	cp -p $(srcdir)/68k.scm $(srcdir)/syn68k_header.c $(srcdir)/68k.defines.scm .
+	if [ "$(srcdir)" != "." ]; then \
+	  cp -p $(srcdir)/68k.scm $(srcdir)/syn68k_header.c $(srcdir)/68k.defines.scm . ; \
+	fi
 	../syngen/syngen -v 68k.scm
 	gzip -1f profileinfo

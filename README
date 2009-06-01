@@ -1,8 +1,5 @@
-Syn68k has not been actively worked on for about thirteen years.  A few
+Syn68k has not been actively worked on since about 1995.  A few
 mods have been made here and there to keep up with changes in gcc.
-
-Right now I'm putting it on github (with Mat Hostetter's permission)
-as-is.  I haven't even tried building it in the last year or so.
 
 My email address is still <ctm@ardi.com>, although ARDI itself is
 defunct.  I get a ridiculous amount of spam and will quite possibly
@@ -13,6 +10,14 @@ write a little documentation, explain a little history, maybe even
 set up a mailing list for people, etc... but other things have always
 taken precedence.
 
-Executor will be put on github soon.
+I have just made some mods so that Syn68k will compile on a Fedora 9
+i386 system.  I haven't yet tested it against anywhere else, nor have
+I verified that what is created will actually work with Executor.
 
-September 26th 2008
+To compile it, try
+
+  ./autogen.sh
+  ./configure
+  make
+
+June 1st, 2009

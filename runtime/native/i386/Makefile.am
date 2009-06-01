@@ -33,7 +33,7 @@ xlatetable.o:	xlatetable.c
 xlate.o:	xlate.c
 	$(CC_FOR_BUILD) $(CFLAGS_FOR_BUILD) -c $(LOCAL_INCLUDES) -o $(@F) $<
 
-%.o:%.c
+.c.o:
 	$(CC_FOR_BUILD) $(CFLAGS_FOR_BUILD) -c $(LOCAL_INCLUDES) -o $(@F) $<
 
 ## ifneq ($(NO_NATIVE), TRUE)
