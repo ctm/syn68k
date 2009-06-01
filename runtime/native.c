@@ -177,8 +177,8 @@ host_setup_cached_reg (COMMON_ARGS, int guest_reg,
 	  & (MAP_NATIVE_MASK
 #ifdef LITTLEENDIAN
 	     | MAP_SWAP16_MASK | MAP_SWAP32_MASK
-	     ))
 #endif /* LITTLEENDIAN */
+	     ))
 	{
 	  host_unoffset_reg (c, codep, cc_spill_if_changed,
 			     guest_reg);
