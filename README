@@ -16,12 +16,13 @@ does not work with Executor.  If I build gcc 4.1.2 from scratch and
 use that to compile syn68k.  I can then use Executor (whether it's
 built using 4.1.2 or 4.3.0).
 
-I will try building a stock gcc 4.2.4 to see if syn68k built with that
-works.  If it does, I'll try a stock 4.3.3 and see if that works, etc.
+It also works with a stock gcc 4.2.4.
 
-Once I know which version of gcc is the earliest to kill syn68k, I'll
-look at the release notes and see if that gives me a hint as to what
-is going wrong.
+Next, I'll try a stock 4.3.3 and see if that works.
+
+If a stock 4.3.3 works, then either it was a bug that has been fixed or it's
+a difference between a stock version and a Red Hat version.  If a stock 4.3.3
+doesn't work, it's probably a difference between 4.2 and 4.3
 
 To compile syn68k, try
 
