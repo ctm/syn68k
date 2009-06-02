@@ -12,17 +12,16 @@ taken precedence.
 
 I have just made some mods so that Syn68k will compile on a Fedora 9
 i386 system (gcc 4.3.0-8).  Unfortunately the resultant libsyn68k.a
-does not work with Executor.  If I build gcc 4.1.2 from scratch and
-use that to compile syn68k.  I can then use Executor (whether it's
-built using 4.1.2 or 4.3.0).
+does not work with Executor.
 
-It also works with a stock gcc 4.2.4.
+If I build gcc 4.1.2 from scratch and use that to compile syn68k.  I
+can then use Executor (whether it's built using 4.1.2 or 4.3.0).  It
+also works with a stock gcc 4.2.4.
 
-Next, I'll try a stock 4.3.3 and see if that works.
-
-If a stock 4.3.3 works, then either it was a bug that has been fixed or it's
-a difference between a stock version and a Red Hat version.  If a stock 4.3.3
-doesn't work, it's probably a difference between 4.2 and 4.3
+A stock 4.3.3 fails, so most likely something was changed in 4.3 that
+causes problems.  Most likely a combination of looking at the
+documentation (what's changed, what new command line switches) and
+playing with .o files will be sufficient to allow me to find a fix.
 
 To compile syn68k, try
 
@@ -31,11 +30,12 @@ To compile syn68k, try
   make
   make install
 
-or if you want to use a non-standard gcc, try something like
+or if you want to use a non-standard gcc, try something like (assumes
+you've built gcc 4.2.4 configured with --prefix=/usr/gcc424):
 
   ./autogen.sh
-  CC=/usr/gcc412/bin/gcc CC_FOR_BUILD=/usr/gcc412/bin/gcc ./configure
+  CC=/usr/gcc424/bin/gcc CC_FOR_BUILD=/usr/gcc424/bin/gcc ./configure
   make
   make install
 
-June 2nd, 2009
+June 3rd, 2009
