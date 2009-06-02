@@ -1,10 +1,13 @@
+lib_LIBRARIES = libsyn68k.a
+include_HEADERS = ../include/syn68k_public.h
+
 host_native=@HOST_NATIVE@
 
 SYN68K_CFLAGS=@SYN68K_CFLAGS@
 CLEANUP=@CLEANUP@
 OPTIMIZE=@OPTIMIZE@
 
-CFLAGS += -DRUNTIME
+AM_CFLAGS = -DRUNTIME
 
 LOCAL_INCLUDES =
 
@@ -16,7 +19,7 @@ LOCAL_CFLAGS = -DRUNTIME -Iinclude
 all: libsyn68k.a
 
 .c.o:
-	$(CC) $(CFLAGS) -c $(LOCAL_INCLUDES) $< -o $@
+	$(CC) $(AM_CFLAGS) -c $(LOCAL_INCLUDES) $< -o $@
 
 OBJS =	block.o diagnostics.o hash.o rangetree.o translate.o alloc.o	\
 	blockinfo.o trap.o destroyblock.o callback.o init.o interrupt.o	\

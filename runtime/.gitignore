@@ -2,3 +2,4 @@ mapindex.c
 mapinfo.c
 profileinfo.gz
 syn68k.c
+.deps
