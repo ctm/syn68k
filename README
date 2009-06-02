@@ -1,23 +1,40 @@
-Syn68k has not been actively worked on since about 1995.  A few
-mods have been made here and there to keep up with changes in gcc.
+Syn68k has not been actively worked on since about 1995.  A few mods
+have been made here and there to keep up with changes in gcc.
 
 My email address is still <ctm@ardi.com>, although ARDI itself is
 defunct.  I get a ridiculous amount of spam and will quite possibly
 not see email addressed to me.
 
 For a few years I've been meaning to verify that the code builds,
-write a little documentation, explain a little history, maybe even
-set up a mailing list for people, etc... but other things have always
+write a little documentation, explain a little history, maybe even set
+up a mailing list for people, etc... but other things have always
 taken precedence.
 
 I have just made some mods so that Syn68k will compile on a Fedora 9
-i386 system.  I haven't yet tested it against anywhere else, nor have
-I verified that what is created will actually work with Executor.
+i386 system (gcc 4.3.0-8).  Unfortunately the resultant libsyn68k.a
+does not work with Executor.  If I build gcc 4.1.2 from scratch and
+use that to compile syn68k.  I can then use Executor (whether it's
+built using 4.1.2 or 4.3.0).
 
-To compile it, try
+I will try building a stock gcc 4.2.4 to see if syn68k built with that
+works.  If it does, I'll try a stock 4.3.3 and see if that works, etc.
+
+Once I know which version of gcc is the earliest to kill syn68k, I'll
+look at the release notes and see if that gives me a hint as to what
+is going wrong.
+
+To compile syn68k, try
 
   ./autogen.sh
   ./configure
   make
+  make install
 
-June 1st, 2009
+or if you want to use a non-standard gcc, try something like
+
+  ./autogen.sh
+  CC=/usr/gcc412/bin/gcc CC_FOR_BUILD=/usr/gcc412/bin/gcc ./configure
+  make
+  make install
+
+June 2nd, 2009
