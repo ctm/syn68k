@@ -1,27 +1,24 @@
 Syn68k has not been actively worked on since about 1995.  A few mods
-have been made here and there to keep up with changes in gcc.
-
-My email address is still <ctm@ardi.com>, although ARDI itself is
-defunct.  I get a ridiculous amount of spam and will quite possibly
-not see email addressed to me.
+have been made here and there to keep up with changes in gcc.  Those
+mods may actually interfere with compiling on older versions of gcc.
+Oh well.
 
 For a few years I've been meaning to verify that the code builds,
 write a little documentation, explain a little history, maybe even set
-up a mailing list for people, etc... but other things have always
-taken precedence.
+up a mailing list for people, etc... but other things continue to take
+precedence.
 
-I have just made some mods so that Syn68k will compile on a Fedora 9
-i386 system (gcc 4.3.0-8).  Unfortunately the resultant libsyn68k.a
-does not work with Executor.
+On an i386 Fedora 9, this version of Syn68k compiles and produces a
+libsyn68k.a that works with Executor.  In a few days Fedora 11 will be
+out, using gcc 4.4.  I'll try to make it so that Syn68k works on it as
+well as older Fedora systems too.  I'll try to get it so the i386
+version of Syn68k works on gcc 4.1, 4.2, 4.3 and 4.4.
 
-If I build gcc 4.1.2 from scratch and use that to compile syn68k.  I
-can then use Executor (whether it's built using 4.1.2 or 4.3.0).  It
-also works with a stock gcc 4.2.4.
-
-A stock 4.3.3 fails, so most likely something was changed in 4.3 that
-causes problems.  Most likely a combination of looking at the
-documentation (what's changed, what new command line switches) and
-playing with .o files will be sufficient to allow me to find a fix.
+Back in the day, Syn68k was very portable and could be run on non-x86
+boxes.  I wouldn't be surprised to find that the non-x86 versions fail
+to work now.  However, once the i386 version runs nicely on a variety
+of gccs it may be fun for someone to make the non i386 versions run
+again.
 
 To compile syn68k, try
 
@@ -30,12 +27,14 @@ To compile syn68k, try
   make
   make install
 
-or if you want to use a non-standard gcc, try something like (assumes
-you've built gcc 4.2.4 configured with --prefix=/usr/gcc424):
+Performance nit:
 
-  ./autogen.sh
-  CC=/usr/gcc424/bin/gcc CC_FOR_BUILD=/usr/gcc424/bin/gcc ./configure
-  make
-  make install
+The code in runtime/i486-cleanup.pl no longer gets rid of all the
+cruft in the trailer.  It's quite possible that the code in
+runtime/i486-optimize.pl doesn't do the right thing either.
+
+My email address is still <ctm@ardi.com>, although ARDI itself is
+defunct.  I get a ridiculous amount of spam and will quite possibly
+not see email addressed to me.
 
 June 3rd, 2009

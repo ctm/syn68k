@@ -6,7 +6,7 @@
 # aligned optimally.
 
 # Delete the header for each function
-if (/^\.globl _s68k_handle_opcode_0x/ .. /^[#\/]APP$/)
+if (/^\.globl _?s68k_handle_opcode_0x/ .. /^[#\/]APP$/)
 {
     print if (/^[#\/]APP/ || /^L/);
 }

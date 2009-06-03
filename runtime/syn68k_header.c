@@ -66,6 +66,9 @@
  * entry, we move it to the head of the linked list.  We can just check the
  * head here; if that fails, we can do the slower check and possible compile.
  */
+
+static __inline__ const uint16 *code_lookup (uint32 addr) __attribute__((always_inline));
+
 static __inline__ const uint16 *
 code_lookup (uint32 addr)
 {
