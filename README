@@ -20,10 +20,19 @@ to work now.  However, once the i386 version runs nicely on a variety
 of gccs it may be fun for someone to make the non i386 versions run
 again.
 
-To compile syn68k, try
+To compile syn68k on a 32-bit i386 system, try
 
   ./autogen.sh
   ./configure
+  make
+  make install
+
+To compile syn68k on a 64-bit x86_64 system, make sure you have all
+the 32-bit libraries you need (on Fedora 10 I needed to install
+glibc-devel.i386 and libgcc.i386) then try this hack
+
+  ./autogen.sh
+  CC='gcc -m32' ./configure --build=i686-pc-linux-gnu --host=i686-pc-linux-gnu
   make
   make install
 
