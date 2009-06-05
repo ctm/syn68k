@@ -11,9 +11,6 @@
  */
 
 static guest_code_descriptor_t *alloc_gcd (void);
-#ifndef linux
-static char *strdup (const char *c);
-#endif
 static char *create_name (const char *n, int size, int src_amode,
 			  int dst_amode, int which);
 static guest_code_descriptor_t *process_move (const xlate_descriptor_t *x);
@@ -1360,19 +1357,6 @@ alloc_gcd ()
   memset (g, 0, sizeof *g);
   return g;
 }
-
-
-#ifndef linux
-static char *
-strdup (const char *c)
-{
-  char *n;
-  n = (char *)malloc (strlen (c) + 1);
-  strcpy (n, c);
-  return n;
-}
-#endif
-
 
 static char *
 create_name (const char *n, int size, int src_amode, int dst_amode, int which)

@@ -171,7 +171,7 @@ host_native_code_init ()
        "1:\n\t"
        "setz %b2\n\t"
        "popfl"
-       : "=r" (scratch1), "=r" (scratch2), "=abcd" (i486_p));
+       : "=r" (scratch1), "=r" (scratch2), "=q" (i486_p));
 
   have_i486_p = i486_p;
 #else  /* !__GNUC__ */

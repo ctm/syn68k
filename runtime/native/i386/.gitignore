@@ -7,3 +7,4 @@ src-stmp
 subdir-stmp
 template
 xlate
+i386-isa.h
