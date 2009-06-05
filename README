@@ -37,7 +37,7 @@ glibc-devel.i386 and libgcc.i386) then try this hack
   make install
 
 To test syn68k, run test/syngentest and compare the output to
-test/output/syngentest.  It should be the same.  If you want to be
+test/output/10000.  It should be the same.  If you want to be
 more thorough, you can use other command line options and compare the
 results to other files, as described in test/output/README.
 

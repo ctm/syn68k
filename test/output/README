@@ -13,10 +13,10 @@ but it's been so long that I don't remember), done sometime in the mid
 The other platform is an i686 Fedora 9 system and those command line switches
 were:
 
-  ../syngentest > syngentest
-  ../syngentest -noncc > syngentest-noncc
-  ../syngentest -noncc -notnative > syngentest-noncc-notnative
-  ../syngentest -notnative > syngentest-notnative
+  ../syngentest > 10000
+  ../syngentest -noncc > 10000-noncc
+  ../syngentest -noncc -notnative > 10000-noncc-notnative
+  ../syngentest -notnative > 10000-notnative
 
 Unfortunately, the memory location that we used to use to test on the 68k
 is unavailable on modern Linux systems, so we can't actually compare the
