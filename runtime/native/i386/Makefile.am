@@ -17,7 +17,9 @@ TEMPLATE_OBJS = main.o template.o process.o
 ANALYZE_OBJS = analyze.o template.o
 XLATE_OBJS = xlatemain.o xlatetable.o xlate.o
 
-host-native.o: host-native.c
+i386-isa.h:	src-stmp
+
+host-native.o: host-native.c i386-isa.h
 	$(CC) $(CFLAGS) -c $(LOCAL_INCLUDES) -o $(@F) $<
 host-xlate.o: host-xlate.c
 	$(CC) $(CFLAGS) -c $(LOCAL_INCLUDES) -o $(@F) $<
