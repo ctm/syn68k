@@ -1,0 +1,33 @@
+This is the output from running syngentest with various command line options
+on two different platforms.
+
+One platform was a hardware 68k (probably a 68040 running NEXTSTEP,
+but it's been so long that I don't remember), done sometime in the mid
+1990s.  IIRC, the command line options were
+
+  ../syngentest 1000 > 68k.1000
+  ../syngentest -noncc 1000 > 68k.noncc.1000
+  ../syngentest 100 > dump-68k-100-cc
+  ../syngentest -noncc 100 > dump-68k-100-noncc
+
+The other platform is an i686 Fedora 9 system and those command line switches
+were:
+
+  ../syngentest > syngentest
+  ../syngentest -noncc > syngentest-noncc
+  ../syngentest -noncc -notnative > syngentest-noncc-notnative
+  ../syngentest -notnative > syngentest-notnative
+
+Unfortunately, the memory location that we used to use to test on the 68k
+is unavailable on modern Linux systems, so we can't actually compare the
+old output from a real 680x0 to the new output, but the new output is
+presumably correct, since we did a lot of testing with a real 68k a long time
+ago and Executor runs with the libsyn68k used with this Fedora 9 syn68k.
+
+The output when you include "-noncc" *should* be different from when
+you don't include it (you can see the difference between 68k.1000 and
+68k.noncc.1000.  The output when you include "-notnative" "shouldn't"
+be different, but it is, and that may well be a bug in Syn68k,
+although it's a bug that has (IIRC) been there from day one.  The
+problem is that we get a different set of condition codes for divs_reg
+in a particular case.

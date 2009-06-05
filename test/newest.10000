@@ -1,6 +1,0 @@
-mem == 0xAF002000
-Testing moveb_pcd8_dreg...2000...4000...6000...8000...10000...done.	pre_crc:0x2353, mem_crc:0x0000, reg_crc:0x0E64
-Testing movewl_pcd8_dreg...2000...4000...6000...8000...10000...done.	pre_crc:0x8773, mem_crc:0x0000, reg_crc:0x5911
-Testing unpk_reg...2000...4000...6000...8000...10000...done.	pre_crc:0x8D83, mem_crc:0x0000, reg_crc:0xC56A
-Testing unpk_mem...2000...4000...6000...8000...10000...done.	pre_crc:0x3458, mem_crc:0xAAF5, reg_crc:0xA52B
-Testing unlk...

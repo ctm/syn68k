@@ -39,9 +39,12 @@ main (int argc, char *argv[])
   /* Grab command-line switches. */
   for (i = 1; i < argc; i++)
     {
+#ifdef mc68000
       if (!strcmp (argv[i], "-crc"))
 	generate_crc = 1;
-      else if (!strcmp (argv[i], "-noncc"))
+      else
+#endif
+            if (!strcmp (argv[i], "-noncc"))
 	test_only_non_cc_variants = 1;
       else if (strcmp (argv[i], "-notnative") == 0)
 	native_p = 0;
@@ -49,8 +52,13 @@ main (int argc, char *argv[])
 	count = atoi (argv[i]);
       else
 	{
+#ifdef mc68000
 	  fprintf (stderr, "Usage: %s [test count] [-crc] [-noncc] [-notnative]\n",
 		   argv[0]);
+#else
+	  fprintf (stderr, "Usage: %s [test count] [-noncc] [-notnative]\n",
+		   argv[0]);
+#endif
 	  exit (-1);
 	}
     }

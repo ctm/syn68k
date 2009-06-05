@@ -36,6 +36,11 @@ glibc-devel.i386 and libgcc.i386) then try this hack
   make
   make install
 
+To test syn68k, run test/syngentest and compare the output to
+test/output/syngentest.  It should be the same.  If you want to be
+more thorough, you can use other command line options and compare the
+results to other files, as described in test/output/README.
+
 Performance nit:
 
 The code in runtime/i486-cleanup.pl no longer gets rid of all the
@@ -45,5 +50,3 @@ runtime/i486-optimize.pl doesn't do the right thing either.
 My email address is still <ctm@ardi.com>, although ARDI itself is
 defunct.  I get a ridiculous amount of spam and will quite possibly
 not see email addressed to me.
-
-June 3rd, 2009
