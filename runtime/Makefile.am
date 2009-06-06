@@ -25,7 +25,7 @@ OBJS =	block.o diagnostics.o hash.o rangetree.o translate.o alloc.o	\
 	blockinfo.o trap.o destroyblock.o callback.o init.o interrupt.o	\
 	profile.o dosinterrupts.o deathqueue.o checksum.o native.o	\
 	backpatch.o recompile.o						\
-	mapindex.o mapinfo.o syn68k.o
+	mapindex.o mapinfo.o syn68k.o opcode_dummy.o
 
 mapinfo.o:	$(host_native)/host-xlate.h
 

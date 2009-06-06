@@ -217,7 +217,7 @@ extern void s68k_handle_opcode_dummy (void);
   asm volatile ("movl %3,%0\n\t" \
 		"addl %4,%1\n\t" \
 		"jmp *%0\n" \
-		"_S68K_DONE_WITH_THIS:" \
+		"/* _S68K_DONE_WITH_THIS: */"                 \
 		: "=r" (next_code), "=r" (code) : "1" (code), \
 		"g" (*(void **)(code + (words_to_inc) - PTR_WORDS)), \
 		"g" (words_to_inc * sizeof (uint16))); \

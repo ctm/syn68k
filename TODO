@@ -1,7 +1,5 @@
         Mac OS X fixes:
 
-                Don't link with -z execstack if that's going to fail
-
                 figure out why i486-cleanup.pl basically eats all
                 of syn68k.s
 
