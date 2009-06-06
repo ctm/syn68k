@@ -67,7 +67,7 @@ test_all_instructions (uint32 try_count)
 #endif
       uint8 *m = mmap (DESIRED_PTR,
                        (M_SIZE + SLOP + 4095) & ~4095,
-                       PROT_READ|PROT_WRITE,
+                       PROT_READ|PROT_WRITE|PROT_EXEC,
                        MAP_ANONYMOUS|MAP_FIXED|MAP_PRIVATE, -1, 0);
 #endif   /* defined (__linux__) */
 

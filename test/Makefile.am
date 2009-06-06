@@ -19,7 +19,7 @@ testbattery.c: tests.c maketestbattery.pl
 
 syngentest_LDADD = ../runtime/libsyn68k.a
 
-syngentest_LDFLAGS = -z execstack
+syngentest_LDFLAGS =
 
 INCLUDES = -I$(srcdir)/include -I$(srcdir)/../include -I../include
 
