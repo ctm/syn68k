@@ -36,12 +36,9 @@ glibc-devel.i386 and libgcc.i386) then try this hack
   make
   make install
 
-Syn68k doesn't currently compile under Mac OS X (tested under 10.5.7)
-due to the use of leading underscores in the symbol table (this is
-easily fixed) and and due to their version of ld not knowing that
--2147483648 is a valid 32-bit relative offset (the error message is
-ld: rel32 out of range in _code_start_24 in _code_start_24).  That's a
-little harder to fix.
+Syn68k currently doesn't build under Mac OS X (tested under 10.5.7)
+do to our unconditional use of "-z execstack" when linking as well as
+the fact that i486-cleanup.pl essentially consumes all of syn68k.s.
 
 To test syn68k, run test/syngentest and compare the output to
 test/output/10000.  It should be the same.  If you want to be

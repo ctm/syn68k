@@ -1,6 +1,9 @@
-$Id: TODO 77 2005-01-04 23:51:13Z ctm $
+        Mac OS X fixes:
 
-	Make it so that we can install libsyn68k.a and the .h files
+                Don't link with -z execstack if that's going to fail
+
+                figure out why i486-cleanup.pl basically eats all
+                of syn68k.s
 
 	Make so we can build the various debug versions, non-native, etc.
 

@@ -1,4 +1,4 @@
-/* $Id: process.c 82 2005-05-11 23:41:32Z ctm $ */
+#include "config.h"
 
 #include "template.h"
 #include "process.h"
@@ -291,11 +291,24 @@ typedef struct
   long value[MAX_VALUE_SET_ENTRIES];
 } value_set_t;
 
+/*
+ * The addition of BROKEN_SIZE_32 (see template.h) and
+ * immediate_values[3] is a hacky workaround for Mac OS X's ld which
+ * doesn't recognize 0x80000000 (-2147483648) as a legitimate 32-bit
+ * relocatable offset.  This prevents calls and jumps from being
+ * properly analyzed.
+ *
+ * For now we sacrifice the analysis of that bit pattern in the few
+ * template entries that would normally have it.  We currently do this
+ * unconditionally because nobody has yet written a configure macro to
+ * detect this problem and then only use "BROKEN_SIZE_32" when we have
+ * a broken ld.
+ */
 
 static int
 create_asmdata (const template_t *t, int num_operands)
 {
-  static const value_set_t immediate_values[3] =
+  static const value_set_t immediate_values[] =
     {  { 12, { 0, 1, 2, -1, -2, 127, -128, -127, 0x37, -100, 0x12, -97 } },
 	 { 23, { 0, 1, 2, 0xFF, 0xFE, 127, -129, -128, -127, 128, 0x37,
 		   -100, 0x12, -97, 32767, -32768, -32767, -1, -2, 0x871,
@@ -304,6 +317,12 @@ create_asmdata (const template_t *t, int num_operands)
 		   0x12, -97,
 		   32767, -32768, -32767, -1, 0xFFFE, 0x871, 0xFA03,
 		   0x1234, 0x8765, 0x7FFFFFFF, 0x80000000, 0x80000001,
+		   0xFFFFFFFF, 0xFFFFFFFE, 0x871529, 0x392332, 0xFA034433,
+                 0x12345678, 0x87654321 } },
+	 { 32, { 0, 1, 2, 0xFF, 0xFE, 128, -129, 127, -128, -127, 0x37, -100,
+		   0x12, -97,
+		   32767, -32768, -32767, -1, 0xFFFE, 0x871, 0xFA03,
+		   0x1234, 0x8765, 0x7FFFFFFF, 0x80000001,
 		   0xFFFFFFFF, 0xFFFFFFFE, 0x871529, 0x392332, 0xFA034433,
 		   0x12345678, 0x87654321 } }
      };
@@ -377,6 +396,11 @@ create_asmdata (const template_t *t, int num_operands)
     {
       char code[2][1024];
       int new_code = 0;
+#if defined(HAVE_SYMBOL_UNDERSCORE)
+      const char *symbol_prefix = "_";
+#else
+      const char *symbol_prefix = "";
+#endif
 
       strcpy (&code[new_code][0], t->code);
       for (op = 0; op < num_operands; op++)
@@ -394,10 +418,10 @@ create_asmdata (const template_t *t, int num_operands)
 
       fprintf (fp,
 	       "  asm volatile (\"\\n\"\n"
-	       "                \"code_start_%d:\\n\\t\"\n"
+	       "                \"%scode_start_%d:\\n\\t\"\n"
 	       "                \"%s\\n\"\n"
-	       "                \"code_end_%d:\");\n",
-	       current, code[new_code], current);
+	       "                \"%scode_end_%d:\");\n",
+               symbol_prefix, current, code[new_code], symbol_prefix, current);
 
       /* Try the next combination of operands. */
       for (op = num_operands - 1; op >= 0; op--)

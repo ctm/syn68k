@@ -16,7 +16,12 @@ typedef enum
   IN, OUT, INOUT
 } io_t;
 
-typedef enum { SIZE_8, SIZE_16, SIZE_32 } byte_size_t;
+/* BROKEN_SIZE_32 is a variant of SIZE_32 that is only used with addresses
+   that cause trouble on Mac OS X's ld.  The problem ld doesn't recognize
+   0x80000000 (-2147483648) as a legitimate 32-bit relative offset.  See
+   the extended comment in process.c for more info */
+
+typedef enum { SIZE_8, SIZE_16, SIZE_32, BROKEN_SIZE_32 } byte_size_t;
 
 typedef struct
 {

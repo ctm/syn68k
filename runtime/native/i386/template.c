@@ -1,6 +1,15 @@
+#include "config.h"
+
 #include "template.h"
 
 /* $Id: template.c 61 2004-12-21 23:44:50Z ctm $ */
+
+#if defined(HAVE_SYMBOL_UNDERSCORE)
+#  define SYMBOL_PREFIX "_"
+#else
+#  define SYMBOL_PREFIX ""
+#endif
+
 
 const template_t template[] =
 {
@@ -624,9 +633,9 @@ const template_t template[] =
       { { SIZE_32, REGISTER, INOUT } } },
 
   { "i386_call_abs", "", "", "", "volatile", "v",
-      "call %P0",
+      "call " SYMBOL_PREFIX  "%P0",
       { "addr" },
-      { { SIZE_32, CONSTANT, IN } } },
+      { { BROKEN_SIZE_32, CONSTANT, IN } } },
 
   { "i386_cbtw", "", "", "(reg8 AL)", "(reg16 AX)", "-",
       "cbtw",
@@ -707,9 +716,9 @@ const template_t template[] =
 
 #define CONDL_BRANCH(op, flags)			\
   { "i386_" op, flags, "", "", "volatile", "v",	\
-      op " %P0",				\
+      op " " SYMBOL_PREFIX "%P0",				\
       { "target" },				\
-      { { SIZE_32, CONSTANT, IN } } }
+      { { BROKEN_SIZE_32, CONSTANT, IN } } }
   
   CONDL_BRANCH ("jc",   "c"),
   CONDL_BRANCH ("jbe",  "cz"),
@@ -727,9 +736,9 @@ const template_t template[] =
   CONDL_BRANCH ("js",   "s"),
 
   { "i386_jmp", "", "", "", "volatile", "v",
-      "jmp %P0",
+      "jmp " SYMBOL_PREFIX "%P0",
       { "target" },
-      { { SIZE_32, CONSTANT, IN } } },
+      { { BROKEN_SIZE_32, CONSTANT, IN } } },
   { "i386_jmp_reg", "", "", "", "volatile", "-",
       "jmp *%0",
       { "target" },

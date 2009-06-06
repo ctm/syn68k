@@ -4,7 +4,7 @@ AC_INIT(syn68k, 1.0, ctm@ardi.com)
 AM_INIT_AUTOMAKE
 
 AC_CONFIG_SRCDIR([syngen/main.c])
-AC_CONFIG_HEADER([config.h])
+AC_CONFIG_HEADERS([include/config.h])
 
 # Checks for programs.
 AC_PROG_CC
@@ -113,6 +113,11 @@ AC_C_CONST
 AC_C_INLINE
 AC_TYPE_SIZE_T
 AC_C_VOLATILE
+
+AC_LTDL_SYMBOL_USCORE
+if test x"$ac_cv_sys_symbol_underscore" = xyes ; then
+  AC_DEFINE(HAVE_SYMBOL_UNDERSCORE, 1, [Define if C symbols have leading underscores])
+fi
 
 # Checks for library functions.
 AC_FUNC_ALLOCA
