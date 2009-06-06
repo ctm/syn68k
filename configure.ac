@@ -144,8 +144,7 @@ LDFLAGS="$LDFLAGS -z execstack"
 AC_CACHE_CHECK([for -z execstack], ac_cv_z_execstack,
    AC_TRY_LINK([],[int main(void) {return 0;}],
                ac_cv_z_execstack=yes,ac_cv_z_execstack=no))
-if test $ac_cv_z_execstack
-then
+if test x$ac_cv_z_execstack = xyes; then
   EXECSTACK="-z execstack"
 fi
 LDFLAGS="$saved_LDFLAGS"
