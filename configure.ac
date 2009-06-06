@@ -135,6 +135,21 @@ AC_CHECK_FUNCS([getpagesize memmove memset strchr strdup strerror strstr])
 
 #AC_SUBST(SUBDIRS)
 
+
+# The following is taken from wine-0.9.25's configure.ac
+
+AC_SUBST(EXECSTACK,"")
+saved_LDFLAGS="$LDFLAGS"
+LDFLAGS="$LDFLAGS -z execstack"
+AC_CACHE_CHECK([for -z execstack], ac_cv_z_execstack,
+   AC_TRY_LINK([],[int main(void) {return 0;}],
+               ac_cv_z_execstack=yes,ac_cv_z_execstack=no))
+if test $ac_cv_z_execstack
+then
+  EXECSTACK="-z execstack"
+fi
+LDFLAGS="$saved_LDFLAGS"
+
 AM_CONDITIONAL([M68K_HOSTCPU], [test "$host_alias" = "m68k-next-ns3"])
 
 AC_CONFIG_FILES([Makefile
