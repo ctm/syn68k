@@ -4,13 +4,6 @@
 
 /* $Id: template.c 61 2004-12-21 23:44:50Z ctm $ */
 
-#if defined(HAVE_SYMBOL_UNDERSCORE)
-#  define SYMBOL_PREFIX "_"
-#else
-#  define SYMBOL_PREFIX ""
-#endif
-
-
 const template_t template[] =
 {
 #define BINARY_OP(op, dstio, memout)					\
@@ -633,7 +626,7 @@ const template_t template[] =
       { { SIZE_32, REGISTER, INOUT } } },
 
   { "i386_call_abs", "", "", "", "volatile", "v",
-      "call " SYMBOL_PREFIX  "%P0",
+      "call L%P0",
       { "addr" },
       { { BROKEN_SIZE_32, CONSTANT, IN } } },
 
@@ -716,7 +709,7 @@ const template_t template[] =
 
 #define CONDL_BRANCH(op, flags)			\
   { "i386_" op, flags, "", "", "volatile", "v",	\
-      op " " SYMBOL_PREFIX "%P0",				\
+      op " L%P0",				\
       { "target" },				\
       { { BROKEN_SIZE_32, CONSTANT, IN } } }
   
@@ -736,7 +729,7 @@ const template_t template[] =
   CONDL_BRANCH ("js",   "s"),
 
   { "i386_jmp", "", "", "", "volatile", "v",
-      "jmp " SYMBOL_PREFIX "%P0",
+      "jmp L%P0",
       { "target" },
       { { BROKEN_SIZE_32, CONSTANT, IN } } },
   { "i386_jmp_reg", "", "", "", "volatile", "-",

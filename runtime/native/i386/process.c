@@ -416,12 +416,24 @@ create_asmdata (const template_t *t, int num_operands)
 	  new_code = !new_code;
 	}
 
+      /*
+       * Use local labels so we get smaller branches even on Mac OS X.  The
+       * following note comes from the Mac OS X Assembler reference:
+       *
+       * Note: The Mac OS X assembler for Intel i386 processors always
+       * produces branch instructions that are long (32 bits) for non-local
+       * labels. This allows the link editor to do procedure ordering (see
+       * the description of the -sectorder option in the ld(1) man page).
+       */
+
       fprintf (fp,
 	       "  asm volatile (\"\\n\"\n"
 	       "                \"%scode_start_%d:\\n\\t\"\n"
 	       "                \"%s\\n\"\n"
+	       "                \"Lcode_end_%d:\\n\"\n"
 	       "                \"%scode_end_%d:\");\n",
-               symbol_prefix, current, code[new_code], symbol_prefix, current);
+               symbol_prefix, current, code[new_code], current,
+               symbol_prefix, current);
 
       /* Try the next combination of operands. */
       for (op = num_operands - 1; op >= 0; op--)

@@ -36,10 +36,10 @@ glibc-devel.i386 and libgcc.i386) then try this hack
   make
   make install
 
-To compile syn68k on Mac OS X (tested under 10.5.7), you currently have to
-override the cleanup script, since the stock script (i486-cleanup.pl) will
-consume all of syn68k.s.  However, even if you do this, the resultant binary
-will not work.
+To compile syn68k on Mac OS X (tested under 10.5.7), you currently
+have to override the cleanup script, since the stock script
+(i486-cleanup.pl) will consume all of syn68k.s.  However, even if you
+do this, the resultant binary will not work with native code.
 
   ./autogen.sh
   CLEANUP='' ./configure
