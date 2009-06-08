@@ -30,11 +30,6 @@
 	figure out *exactly* which options should be available
 	via configure
 
-	clean the junk out of test (mostly old test results)
-
-	build some semi-canonical test results to use for
-	comparing on other platforms
-
 	write-up what is needed to do testing on a real m68k
 
 	need a .spec file so we can build syn68k and syn68k-devel
