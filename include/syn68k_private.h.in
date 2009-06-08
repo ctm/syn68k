@@ -5,6 +5,8 @@
 #ifndef _syn68k_private_h_
 #define _syn68k_private_h_
 
+@NONNATIVE@
+
 /* 	$Id: syn68k_private.h.in 72 2004-12-28 15:57:12Z ctm $	 */
 
 #include "syn68k_public.h"

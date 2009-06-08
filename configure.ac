@@ -68,13 +68,13 @@ AC_ARG_ENABLE([native],
 	      [var_native=$enable_native], [var_native=yes] )
 if test "$var_native" = "yes"; then
   HOST_NATIVE="native/i386"
-  NO_NATIVE=FALSE
+  NONNATIVE=""
 else
   HOST_NATIVE="native/null"
-  NO_NATIVE=TRUE
+  NONNATIVE="#define NONNATIVE"
 fi
+AC_SUBST(NONNATIVE)
 AC_SUBST(HOST_NATIVE)
-AC_SUBST(NO_NATIVE)
 
 AC_ARG_ENABLE([debug],
 	      AC_HELP_STRING([--enable-debug],

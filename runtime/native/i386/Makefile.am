@@ -38,14 +38,9 @@ xlate.o:	xlate.c
 .c.o:
 	$(CC_FOR_BUILD) $(CFLAGS_FOR_BUILD) -c $(LOCAL_INCLUDES) -o $(@F) $<
 
-## ifneq ($(NO_NATIVE), TRUE)
 subdir-stmp: $(MISC_OBJS) src-stmp obj-stmp
 	echo $(MISC_OBJS) 		\
              `ls _*.o` > subdir-stmp
-## else
-## subdir-stmp:
-## 	> subdir-stmp
-## endif
 
 obj-stmp:
 	k=1;							\
