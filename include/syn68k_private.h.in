@@ -41,7 +41,7 @@
  * should work even if you leave it undefined though.  If you have problems
  * with divide, try undef'ing this to use the slower but safer version.
  */
-#if @host_cpu_class@ == i386 /* ||defined(mc68000) || defined(i386) || defined(__alpha) || defined (powerpc) || defined (__ppc__) */
+#if defined(mc68000) || defined(i386) || defined(__alpha) || defined (powerpc) || defined (__ppc__) || defined(__x86_64)
 # define M68K_DIVISION_BEHAVIOR
 #endif
 
@@ -59,7 +59,7 @@
 /* #define this if support exists for generating native code in some
  * situations.
  */
-#if defined (USE_DIRECT_DISPATCH) && @host_cpu_class@ == i386 && !defined (NONNATIVE)
+#if defined (USE_DIRECT_DISPATCH) && defined(i386) && !defined (NONNATIVE)
 # define GENERATE_NATIVE_CODE
 #endif
 

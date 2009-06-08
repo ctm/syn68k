@@ -12,7 +12,8 @@
 # if defined(__BIG_ENDIAN__) || defined(m68k) || defined(mc68000) \
      || defined(sparc) || defined(powerpc) || defined (__ppc__)
 #  define BIGENDIAN  /* ARDI naming convention, why rock the boat? */
-# elif defined(__alpha) || defined(i860) || defined(vax) || defined(i386)
+# elif defined(__alpha) || defined(i860) || defined(vax) || defined(i386) \
+     || defined(__x86_64)
 #  define LITTLEENDIAN
 # else
 #  error "Unknown CPU type"
@@ -35,7 +36,7 @@
 #  define QUADALIGN
 # elif !defined(m68k) && !defined(mc68000) && !defined(i386) \
        && !defined(vax) && !defined(__alpha) && !defined(powerpc) \
-       && !defined (__ppc__)
+       && !defined (__ppc__) && !defined(__x86_64)
 #  error Unknown CPU type
 # endif
 #endif

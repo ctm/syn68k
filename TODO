@@ -1,3 +1,8 @@
+        Non-native version can't be built
+
+                may need to dig into ancient svn history to find old
+                makefiles that used to build it
+
         Mac OS X fixes:
 
                 figure out why i486-cleanup.pl basically eats all
