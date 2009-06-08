@@ -21,7 +21,7 @@ typedef enum
    0x80000000 (-2147483648) as a legitimate 32-bit relative offset.  See
    the extended comment in process.c for more info */
 
-typedef enum { SIZE_8, SIZE_16, SIZE_32, BROKEN_SIZE_32 } byte_size_t;
+typedef enum { SIZE_8, SIZE_16, SIZE_32 } byte_size_t;
 
 typedef struct
 {

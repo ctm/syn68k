@@ -628,7 +628,7 @@ const template_t template[] =
   { "i386_call_abs", "", "", "", "volatile", "v",
       "call L%P0",
       { "addr" },
-      { { BROKEN_SIZE_32, CONSTANT, IN } } },
+      { { SIZE_32, CONSTANT, IN } } },
 
   { "i386_cbtw", "", "", "(reg8 AL)", "(reg16 AX)", "-",
       "cbtw",
@@ -711,7 +711,7 @@ const template_t template[] =
   { "i386_" op, flags, "", "", "volatile", "v",	\
       op " L%P0",				\
       { "target" },				\
-      { { BROKEN_SIZE_32, CONSTANT, IN } } }
+      { { SIZE_32, CONSTANT, IN } } }
   
   CONDL_BRANCH ("jc",   "c"),
   CONDL_BRANCH ("jbe",  "cz"),
@@ -731,7 +731,7 @@ const template_t template[] =
   { "i386_jmp", "", "", "", "volatile", "v",
       "jmp L%P0",
       { "target" },
-      { { BROKEN_SIZE_32, CONSTANT, IN } } },
+      { { SIZE_32, CONSTANT, IN } } },
   { "i386_jmp_reg", "", "", "", "volatile", "-",
       "jmp *%0",
       { "target" },

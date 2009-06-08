@@ -291,20 +291,6 @@ typedef struct
   long value[MAX_VALUE_SET_ENTRIES];
 } value_set_t;
 
-/*
- * The addition of BROKEN_SIZE_32 (see template.h) and
- * immediate_values[3] is a hacky workaround for Mac OS X's ld which
- * doesn't recognize 0x80000000 (-2147483648) as a legitimate 32-bit
- * relocatable offset.  This prevents calls and jumps from being
- * properly analyzed.
- *
- * For now we sacrifice the analysis of that bit pattern in the few
- * template entries that would normally have it.  We currently do this
- * unconditionally because nobody has yet written a configure macro to
- * detect this problem and then only use "BROKEN_SIZE_32" when we have
- * a broken ld.
- */
-
 static int
 create_asmdata (const template_t *t, int num_operands)
 {
@@ -319,12 +305,6 @@ create_asmdata (const template_t *t, int num_operands)
 		   0x1234, 0x8765, 0x7FFFFFFF, 0x80000000, 0x80000001,
 		   0xFFFFFFFF, 0xFFFFFFFE, 0x871529, 0x392332, 0xFA034433,
                  0x12345678, 0x87654321 } },
-	 { 32, { 0, 1, 2, 0xFF, 0xFE, 128, -129, 127, -128, -127, 0x37, -100,
-		   0x12, -97,
-		   32767, -32768, -32767, -1, 0xFFFE, 0x871, 0xFA03,
-		   0x1234, 0x8765, 0x7FFFFFFF, 0x80000001,
-		   0xFFFFFFFF, 0xFFFFFFFE, 0x871529, 0x392332, 0xFA034433,
-		   0x12345678, 0x87654321 } }
      };
 #if 0
   /* Explanation of this warning:
