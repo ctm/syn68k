@@ -1,7 +1,11 @@
-        Non-native version can't be built
+        --enable-native should default to true IFF on i386
 
-                may need to dig into ancient svn history to find old
-                makefiles that used to build it
+        x86_64 (non-native) doesn't run
+
+                try to get non-native i386 running first
+
+                look at how we convert between Mac addresses and pointers
+                (especially look at code we used to use on alpha)
 
         Mac OS X fixes:
 
@@ -39,4 +43,3 @@
 
 	need a .spec file so we can build syn68k and syn68k-devel
 	RPMS
-

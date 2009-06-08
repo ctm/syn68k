@@ -61,18 +61,19 @@ esac
 
 AC_SUBST(host_cpu_class)
 
-HOST_NATIVE="native/i386"
-AC_SUBST(HOST_NATIVE)
 
 AC_ARG_ENABLE([native],
 	      AC_HELP_STRING([--enable-native],
 			     [native or nonnative (default is native)]),
 	      [var_native=$enable_native], [var_native=yes] )
 if test "$var_native" = "yes"; then
+  HOST_NATIVE="native/i386"
   NO_NATIVE=FALSE
 else
+  HOST_NATIVE="native/null"
   NO_NATIVE=TRUE
 fi
+AC_SUBST(HOST_NATIVE)
 AC_SUBST(NO_NATIVE)
 
 AC_ARG_ENABLE([debug],
