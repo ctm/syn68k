@@ -530,7 +530,7 @@ generate_code (Block *b, TempBlockInfo *tbi, BOOL try_native_p)
 		      + PTR_WORDS);
   b->malloc_code_offset = PTR_WORDS;
 
-  WRITE_LONG (&b->compiled_code[PTR_WORDS], b->m68k_start_address);
+  WRITE_LONG (&b->compiled_code[-PTR_WORDS], b->m68k_start_address);
 
 #ifdef GENERATE_NATIVE_CODE
   /* Now that the block's code is at a fixed address, patch up any
