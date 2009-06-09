@@ -1,3 +1,5 @@
+#include "config.h"
+
 /* Global register to hold the PC.  We put this up here so that
  * the global register will be defined before any of the inline functions
  * in syn68k_public.h are hit, but after uint16 is typedef'd.
@@ -690,7 +692,7 @@ interpret_code (const uint16 *start_code)
 	     * endian order.  Since we know we're at the beginning of
 	     * a block, we can check for the interrupt here.
 	     */
-#if !defined (__alpha) /* FIXME -- TODO -- just use __alpha case for everyone */
+#if SIZEOF_CHAR_P != 8
 	    syn68k_addr_t addr = READUL (US_TO_SYN68K (code - PTR_WORDS - PTR_WORDS));
 #else
 	    syn68k_addr_t addr = READUL_US (code - PTR_WORDS - PTR_WORDS);

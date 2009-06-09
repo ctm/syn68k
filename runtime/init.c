@@ -1,3 +1,5 @@
+#include "config.h"
+
 #include "syn68k_private.h"
 #include "hash.h"
 #include "rangetree.h"
@@ -103,7 +105,7 @@ initialize_68k_emulator (void (*while_busy)(int), int native_p,
 
   /* Create the magical block that contains an RTE. */
   b = NULL;
-#if !defined (__alpha)
+#if SIZEOF_CHAR_P != 8
   generate_block (NULL, US_TO_SYN68K (&rte), &b, TRUE);
 #else
   {

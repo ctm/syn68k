@@ -1,3 +1,5 @@
+#include "config.h"
+
 #include "syn68k_private.h"
 #include "backpatch.h"
 #include "alloc.h"
@@ -57,7 +59,7 @@ backpatch_apply_and_free (Block *b, backpatch_t *p)
 	*(uint16 *)((char *)b->compiled_code + first_byte) = value;
       else if (length == 8)
 	*(uint8 *)((char *)b->compiled_code + first_byte) = value;
-#if defined (__alpha)
+#if SIZEOF_CHAR_P == 8
       else if (length == 64)
 	*(uint64 *)((char *)b->compiled_code + first_byte) = value;
 #endif

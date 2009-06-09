@@ -138,7 +138,8 @@ generate_c_code (const ParsedOpcodeInfo *info, const CCVariant *var,
 
   else    /* If we end a block, profile the next block. */
     {
-#if !defined (__alpha) /* FIXME -- TODO -- just use __alpha case for everyone */
+/* #if !defined (__alpha) /* FIXME -- TODO -- just use __alpha case for everyone */
+#if SIZEOF_CHAR_P != 8
       fputs ("\n#ifdef PROFILE\n"
 	     "       profile_block (hash_lookup "
 	     "(READUL (US_TO_SYN68K (code) - 4)));\n"
@@ -154,7 +155,7 @@ generate_c_code (const ParsedOpcodeInfo *info, const CCVariant *var,
 
 #if defined (SYNCHRONOUS_INTERRUPTS) && !defined (GENERATE_NATIVE_CODE)
       fprintf (syn68k_c_stream,
-"#if !defined (__alpha) /* FIXME -- TODO -- just use __alpha case for everyone */\n"
+"#if SIZEOF_CHAR_P != 8\n"
 "	    CHECK_FOR_INTERRUPT (READUL (US_TO_SYN68K (code - PTR_WORDS)));\n"
 "#else\n"
 "	    CHECK_FOR_INTERRUPT (READUL_US (code - PTR_WORDS));\n"
