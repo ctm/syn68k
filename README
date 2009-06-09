@@ -1,24 +1,27 @@
-Syn68k has not been actively worked on since about 1995.  A few mods
-have been made here and there to keep up with changes in gcc.  Those
-mods may actually interfere with compiling on older versions of gcc.
-Oh well.
+Syn68k has not been actively worked on since about 1995.  When it was
+originally written, there were a bunch of alterable variables in
+various Makefiles that allowed us to build Syn68k for many different
+architectures with a few different features.
 
-For a few years I've been meaning to verify that the code builds,
-write a little documentation, explain a little history, maybe even set
-up a mailing list for people, etc... but other things continue to take
-precedence.
+In late 2003 we did a partial conversion from our home-grown build
+system to the GNU build system.  The result was a Syn68k that could be
+built with the then current version of gcc but basically only for the
+i386 architecture using the native code back-end.  That's basically the
+state Syn68k was in when I put the code on github in September 2006.
+
+In June 2009, I've been able to scrape together a little free time and
+make it so Syn68k builds on a few more platforms than it did.  There's
+still a lot of cruft that can be removed and still a bunch of gotchas
+that require special command line arguments to the configuration
+utility, but at least there are enough variants that can be built to
+show that at least for little endian architectures, 32-bit and 64-bit
+versions can be built that don't use the native backend.
 
 On an i386 Fedora 9, this version of Syn68k compiles and produces a
-libsyn68k.a that works with Executor.  In a few days Fedora 11 will be
+libsyn68k.a that works with Executor.  Tomorrow, Fedora 11 will be
 out, using gcc 4.4.  I'll try to make it so that Syn68k works on it as
-well as older Fedora systems too.  I'll try to get it so the i386
-version of Syn68k works on gcc 4.1, 4.2, 4.3 and 4.4.
-
-Back in the day, Syn68k was very portable and could be run on non-x86
-boxes.  I wouldn't be surprised to find that the non-x86 versions fail
-to work now.  However, once the i386 version runs nicely on a variety
-of gccs it may be fun for someone to make the non i386 versions run
-again.
+well as older Fedora systems too.  I'll try to get it so the i386 and
+x86_64 versions of Syn68k works on gcc 4.1, 4.2, 4.3 and 4.4.
 
 To compile syn68k on a 32-bit i386 system, try
 
@@ -27,7 +30,7 @@ To compile syn68k on a 32-bit i386 system, try
   make
   make install
 
-To compile syn68k on a 64-bit x86_64 system, make sure you have all
+To compile a 32-bit syn68k on an x86_64 system, make sure you have all
 the 32-bit libraries you need (on Fedora 10 I needed to install
 glibc-devel.i386 and libgcc.i386) then try this hack
 
@@ -36,14 +39,25 @@ glibc-devel.i386 and libgcc.i386) then try this hack
   make
   make install
 
-To compile syn68k on Mac OS X (tested under 10.5.7), you currently
-have to override the cleanup script, since the stock script
+To compile syn68k on Intel Mac OS X (tested under 10.5.7), you
+currently have to override the cleanup script, since the stock script
 (i486-cleanup.pl) will consume all of syn68k.s.
 
   ./autogen.sh
   CLEANUP='' ./configure
   make
-  make install
+  # No point to installing it, since Executor doesn't run on Mac OS X
+
+It's possible to compile a 64-bit version of Syn68k on an x86_64
+(which won't work with Executor, AFAIK), but you currently need to
+manually adjust SYN68K_CFLAGS (at least Fedora 10's gcc 4.3.2 20081105
+(Red Hat 4.3.2-7)) due to a bug that allows "dead code elimination" to
+eliminate updates to a global register.
+
+  ./autogen.sh
+  SYN68K_CFLAGS='-O2 -fomit-frame-pointer -fno-dce' ./configure --disable-native
+  make
+  # No point to installing it, since Executor doesn't run in 64-bit mode
 
 To test syn68k, run test/syngentest and compare the output to
 test/output/10000.  It should be the same, assuming the same block of
@@ -60,4 +74,7 @@ runtime/i486-optimize.pl doesn't do the right thing either.
 
 My email address is still <ctm@ardi.com>, although ARDI itself is
 defunct.  I get a ridiculous amount of spam and will quite possibly
-not see email addressed to me.
+not see email addressed to me.  Most likely I'll be checking my github
+(I'm ctm) mail daily.
+
+--Cliff Matthews
