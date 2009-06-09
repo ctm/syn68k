@@ -18,10 +18,9 @@ show that at least for little endian architectures, 32-bit and 64-bit
 versions can be built that don't use the native backend.
 
 On an i386 Fedora 9, this version of Syn68k compiles and produces a
-libsyn68k.a that works with Executor.  Tomorrow, Fedora 11 will be
-out, using gcc 4.4.  I'll try to make it so that Syn68k works on it as
-well as older Fedora systems too.  I'll try to get it so the i386 and
-x86_64 versions of Syn68k works on gcc 4.1, 4.2, 4.3 and 4.4.
+libsyn68k.a that works with Executor.  Fedora 11 is now out and it
+uses gcc 4.4.  Once I have Fedora 11 installed, I'll test under gcc
+4.4.
 
 To compile syn68k on a 32-bit i386 system, try
 
@@ -45,6 +44,15 @@ currently have to override the cleanup script, since the stock script
 
   ./autogen.sh
   CLEANUP='' ./configure
+  make
+  # No point to installing it, since Executor doesn't run on Mac OS X
+
+To compile syn68k on PPC Mac OS X (tested under 10.5.7), you must explicitly
+request the non-native port (the default is to try to build the native
+backend even on architectures where it's not supported--bad default!)
+
+  ./autogen.sh
+  ./configure --disable-native
   make
   # No point to installing it, since Executor doesn't run on Mac OS X
 

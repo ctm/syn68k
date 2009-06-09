@@ -1,18 +1,23 @@
-        --enable-native should default to true IFF on i386
+        --enable-native should only be present where it's available
+        and perhaps should default to whatever is fastest (e.g., I
+        believe it's faster to run native in 32-bit mode on an x86_64
+        than it is to run non-native in 64-bit mode on an x86_64, although
+        I haven't yet timed them)
 
-        x86_64 (non-native) doesn't run
+        only invoke the x86 cleanup & optimize when compiling for an
+        x86 architecture
 
-                try to get non-native i386 running first
+        Fix i486-cleanup.pl and i486-optimize.pl for all x86 targets
+        (including Mac OS X)
 
-                look at how we convert between Mac addresses and pointers
-                (especially look at code we used to use on alpha)
-
-        Mac OS X fixes:
-
-                figure out why i486-cleanup.pl basically eats all
-                of syn68k.s
+        See if we can find an address to map that is available to all our
+        currently tested targets (i386-native, i386-notnative, x86_64,
+        ppc)
 
 	Make so we can build the various debug versions, non-native, etc.
+
+        	figure out *exactly* which options should be available
+        	via configure
 
 	Figure out exactly which variables Makefile.common.in sets, then
 	get rid of Makefile.common.in
@@ -30,14 +35,6 @@
 	Make sure make clean really does a make clean
 
 	Make sure we get proper dependencies (if possible)
-
-	make sure syn68k builds on a powerpc (either the
-	old yellow dog linux on sybil, or on Mac OS X on sybil)
-
-		non-native
-
-	figure out *exactly* which options should be available
-	via configure
 
 	write-up what is needed to do testing on a real m68k
 
