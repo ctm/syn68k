@@ -18,7 +18,7 @@
 #elif defined (powerpc) || defined (__ppc__)
 # define GLOBAL_REGISTER_DECLS register const uint16 *code asm ("%r13");
 #elif defined(__x86_64)
-# define GLOBAL_REGISTER_DECLS register const uint16 *code asm ("%rsi");
+# define GLOBAL_REGISTER_DECLS register const uint16 *code asm ("%r12");
 #else
 # error "Choose a global register to hold the current synthetic PC.  Make sure it is saved by the normal calling convention."
 #endif

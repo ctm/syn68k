@@ -10,10 +10,10 @@
 
 #include <unistd.h>
 
-#if !defined (__alpha)
+#if SIZEOF_CHAR_P == 4
 uint32 ROMlib_offset = MEMORY_OFFSET;
 #else
-unsigned long ROMlib_offset = MEMORY_OFFSET;
+uint64 ROMlib_offset = MEMORY_OFFSET;
 #endif
 
 /* These are set by command-line switches. */

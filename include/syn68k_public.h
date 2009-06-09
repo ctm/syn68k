@@ -1,8 +1,7 @@
 #if !defined (_syn68k_public_h_)
 #define _syn68k_public_h_
 
-/* 	$Id: syn68k_public.h 83 2005-05-12 02:33:41Z ctm $	 */
-
+#include <stdint.h>
 #include <setjmp.h>
 
 /* Decide whether we are big or little endian here.  Add more machines as
@@ -60,32 +59,19 @@
 # define USE_BIOS_TIMER
 #endif
 
-#if !defined (INT_TYPES_TYPEDEFED)
 /* Portability typedefs for signed and unsigned n-bit numbers. */
-typedef signed char int8;
-typedef unsigned char uint8;
-typedef signed short int16;
-typedef unsigned short uint16;
 
-#if !defined(__alpha)
+/* TODO: just use the ones from stdint.h instead of our own */
 
-typedef signed long int32;
-typedef unsigned long uint32;
+typedef int8_t int8;
+typedef uint8_t uint8;
+typedef int16_t int16;
+typedef uint16_t uint16;
+typedef int32_t int32;
+typedef uint32_t uint32;
+typedef int64_t int64;
+typedef uint64_t uint64;
 
-#else /* defined(__alpha) */
-
-typedef signed int int32;
-typedef unsigned int uint32;
-
-#endif /* defined(__alpha) */
-
-
-#if defined (__GNUC__)  /* Hack to compile mapindex.c on hokibox. */
-typedef signed long long int64;
-typedef unsigned long long uint64;
-#endif
-
-#endif /* !INT_TYPES_TYPEDEFED */
 
 
 /* Typedef for address in 68k space. */
@@ -230,23 +216,36 @@ extern uint16 callback_dummy_address_space[];
 # define CLEAN(addr) (((ptr_sized_uint)(addr)) & LEGAL_ADDRESS_BITS)
 #endif
 
-#if !defined (__alpha)
+
+/* TODO: see if get rid of need for SIZEOF_CHAR_P, since that's something
+         that comes from config.h and we shouldn't require users of
+         syn68k_public.h to require config.h */
+
+#if !defined(SIZEOF_CHAR_P)
+
+#if !defined(__x86_64)
+# define SIZEOF_CHAR_P 4
+#else
+# define SIZEOF_CHAR_P 8
+#endif
+
+#endif
+
+
+#if SIZEOF_CHAR_P == 4
+
 extern uint32 ROMlib_offset;
-#else
-extern unsigned long ROMlib_offset;
-#endif
-
-/* Handy macros to convert back and forth between address spaces. */
-#if !defined (__alpha)
 #define SYN68K_TO_US(addr) ((uint16 *) ((unsigned long)addr + ROMlib_offset)) /* uint16 * only the default. */
-#else
-#define SYN68K_TO_US(addr) ((uint16 *) ((unsigned long)(uint32)addr + ROMlib_offset)) /* uint16 * only the default. */
-#endif
-
-#if !defined (__alpha)
 #define US_TO_SYN68K(addr) (/*(syn68k_addr_t)*/(int32) (addr) - ROMlib_offset)
-#else
+
+#elif SIZEOF_CHAR_P == 8
+
+extern uint64 ROMlib_offset;
+#define SYN68K_TO_US(addr) ((uint16 *) ((uint64)(uint32)addr + ROMlib_offset)) /* uint16 * only the default. */
 #define US_TO_SYN68K(addr) ((uint32) ((long) (addr) - ROMlib_offset))
+
+#else
+#error "SIZEOF_CHAR_P unknown"
 #endif
 
      /* These macros should not be used within Syn68k, but are needed in

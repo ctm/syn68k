@@ -107,7 +107,7 @@ esac
 
 # Checks for header files.
 AC_HEADER_STDC
-AC_CHECK_HEADERS([stddef.h stdlib.h string.h sys/param.h unistd.h])
+AC_CHECK_HEADERS([stddef.h stdlib.h string.h sys/param.h unistd.h stdint.h])
 
 # Checks for typedefs, structures, and compiler characteristics.
 AC_C_CONST
@@ -129,6 +129,20 @@ AC_FUNC_MALLOC
 AC_FUNC_REALLOC
 AC_FUNC_VPRINTF
 AC_CHECK_FUNCS([getpagesize memmove memset strchr strdup strerror strstr])
+
+AC_CHECK_SIZEOF([char *])
+
+AC_TYPE_INT8_T
+AC_TYPE_UINT8_T
+
+AC_TYPE_INT16_T
+AC_TYPE_UINT16_T
+
+AC_TYPE_INT32_T
+AC_TYPE_UINT32_T
+
+AC_TYPE_INT64_T
+AC_TYPE_UINT64_T
 
 #if test -n "$configdirs"; then
 #  AC_CONFIG_SUBDIRS($configdirs)
