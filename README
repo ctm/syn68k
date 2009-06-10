@@ -1,3 +1,9 @@
+Syn68k is a "synthetic CPU" that executes Motorola 68LC040
+instructions, either via interpretation or via compilation into Intel
+ia32 instructions.  It was originally written to allow Executor (a
+Macintosh emulator) to run on platforms that didn't contain a 680x0
+CPU.  Executor first ran on the Sun-3, and then on NeXT computers.
+
 Syn68k has not been actively worked on since about 1995.  When it was
 originally written, there were a bunch of alterable variables in
 various Makefiles that allowed us to build Syn68k for many different
@@ -80,7 +86,7 @@ runtime/i486-optimize.pl doesn't do the right thing either.
 
 My email address is still <ctm@ardi.com>, although ARDI itself is
 defunct.  I get a ridiculous amount of spam and will quite possibly
-not see email addressed to me.  Most likely I'll be checking my github
-(I'm ctm) mail daily.
+not see email addressed to me.  I'm ctm on github (http://github.com)
+and typically check my email there once a day.
 
 --Cliff Matthews
