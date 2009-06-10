@@ -29,7 +29,7 @@ inline_cmpb (uint8 n1, uint8 n2)
        "seto %2"
        : "=m" (cpu_state.ccc), "=m" (cpu_state.ccn),
        "=m" (cpu_state.ccv), "=m" (cpu_state.ccnz)
-       : "q" (n1), "ri" (n2)
+       : "q" (n1), "qi" (n2)
        : "cc");
 }
 

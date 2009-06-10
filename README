@@ -14,13 +14,11 @@ make it so Syn68k builds on a few more platforms than it did.  There's
 still a lot of cruft that can be removed and still a bunch of gotchas
 that require special command line arguments to the configuration
 utility, but at least there are enough variants that can be built to
-show that at least for little endian architectures, 32-bit and 64-bit
-versions can be built that don't use the native backend.
+show that both big-endian (e.g., PPC) and little-endian (e.g. i386, x86_64),
+32-bit and 64-bit, native (i386-only) and non-native versions work.
 
-On an i386 Fedora 9, this version of Syn68k compiles and produces a
-libsyn68k.a that works with Executor.  Fedora 11 is now out and it
-uses gcc 4.4.  Once I have Fedora 11 installed, I'll test under gcc
-4.4.
+On i386 Fedora systems (tested on 9 and 11), this version of Syn68k
+compiles and produces a libsyn68k.a that works with Executor.
 
 To compile syn68k on a 32-bit i386 system, try
 
