@@ -49,7 +49,7 @@ currently have to override the cleanup script, since the stock script
   ./autogen.sh
   CLEANUP='' ./configure
   make
-  # No point to installing it, since Executor doesn't run on Mac OS X
+  make install        
 
 To compile syn68k on PPC Mac OS X (tested under 10.5.7), you must explicitly
 request the non-native port (the default is to try to build the native
@@ -58,7 +58,7 @@ backend even on architectures where it's not supported--bad default!)
   ./autogen.sh
   ./configure --disable-native
   make
-  # No point to installing it, since Executor doesn't run on Mac OS X
+  make install
 
 It's possible to compile a 64-bit version of Syn68k on an x86_64
 (which won't work with Executor, AFAIK), but you currently need to
