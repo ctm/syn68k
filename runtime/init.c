@@ -23,6 +23,12 @@
 /* Global CPU state struct. */
 CPUState cpu_state;
 
+#if SIZEOF_CHAR_P == 4
+uint32 ROMlib_offset;
+#else
+uint64 ROMlib_offset;
+#endif
+
 /* This function initializes syn68k.  Call it exactly once, before any
  * other syn68k calls.  DOS_INT_FLAG_ADDR is the conventional memory
  * offset of the 32 bit synchronous interrupt flag.  Just pass in zero

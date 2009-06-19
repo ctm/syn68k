@@ -10,12 +10,6 @@
 
 #include <unistd.h>
 
-#if SIZEOF_CHAR_P == 4
-uint32 ROMlib_offset = MEMORY_OFFSET;
-#else
-uint64 ROMlib_offset = MEMORY_OFFSET;
-#endif
-
 /* These are set by command-line switches. */
 int test_only_non_cc_variants;  /* If 0, test only cc setting variants. */
 int generate_crc;

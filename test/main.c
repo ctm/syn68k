@@ -28,6 +28,8 @@ main (int argc, char *argv[])
   malloc_debug (31);   /* Just to be safe. */
 #endif
 
+  ROMlib_offset = MEMORY_OFFSET;
+
   /* Set up default values for command line switches. */
   test_only_non_cc_variants = 0;
 #ifdef mc68000
