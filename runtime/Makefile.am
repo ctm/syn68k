@@ -4,8 +4,8 @@ include_HEADERS = ../include/syn68k_public.h
 host_native=@HOST_NATIVE@
 
 SYN68K_CFLAGS=@SYN68K_CFLAGS@
-CLEANUP=@CLEANUP@
-OPTIMIZE=@OPTIMIZE@
+CLEANUP=@assembly_cleanup_script@
+OPTIMIZE=@assembly_optimization_script@
 
 AM_CFLAGS = -DRUNTIME
 

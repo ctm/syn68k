@@ -1,3 +1,17 @@
+        May be able to avoid dce problems if we use && for labels (that
+        may also get rid of our need for the cleanup code, too)
+
+        Need to make it so that the minimal required compilation options for
+        x86_64 (-fno-dce) are set up by default
+
+                should probably report dead code elimination bug before I
+                forget the details (I've probably already lost the minimal
+                test case) (the details being that if you update a global
+                register and then use a label pointer to jump away, the
+                update can get eliminated even though the register can
+                still be accessed
+
+
         cleanup and optimize shouldn't be done via environment variables;
         they should be done with AC_ARG_ENABLE and default to be turned on
         on the architectures where they work (and should be made to work on

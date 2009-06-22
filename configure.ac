@@ -28,21 +28,6 @@ AC_ARG_VAR(CC_FOR_BUILD,[C compiler for building tools])
 CFLAGS_FOR_BUILD="${CFLAGS_FOR_BUILD-}"
 AC_ARG_VAR(CFLAGS_FOR_BUILD,[C flags for building tools])
 
-AC_MSG_CHECKING([Syn68k C flags (TODO: FIXME)])
-SYN68K_CFLAGS="${SYN68K_CFLAGS--O2 -fomit-frame-pointer}"
-AC_MSG_RESULT([$SYN68K_CFLAGS])
-AC_ARG_VAR(SYN68K_CFLAGS,[Syn68k C flags (TODO: FIXME)])
-
-AC_MSG_CHECKING([cleanup script])
-CLEANUP="${CLEANUP-./i486-cleanup.pl}"
-AC_MSG_RESULT([$CLEANUP])
-AC_ARG_VAR(CLEANUP,[cleanup script])
-
-AC_MSG_CHECKING([optimization script])
-OPTIMIZE="${OPTIMIZE-./i486-optimize.pl}"
-AC_MSG_RESULT([$OPTIMIZE])
-AC_ARG_VAR(OPTIMIZE,[optimization script])
-
 if test "$host_alias" = ""; then
   host=i486-linux-glibc
 fi
@@ -56,6 +41,11 @@ esac
 
 AC_SUBST(host_cpu_class)
 
+
+AC_MSG_CHECKING([Syn68k C flags (TODO: FIXME)])
+SYN68K_CFLAGS="${SYN68K_CFLAGS--O2 -fomit-frame-pointer}"
+AC_MSG_RESULT([$SYN68K_CFLAGS])
+AC_ARG_VAR(SYN68K_CFLAGS,[Syn68k C flags (TODO: FIXME)])
 
 AC_ARG_ENABLE([native],
 	      AC_HELP_STRING([--enable-native],
@@ -81,6 +71,40 @@ AC_MSG_RESULT([$enable_native])
 
 AC_SUBST(NONNATIVE)
 AC_SUBST(HOST_NATIVE)
+
+AC_ARG_ENABLE([assembly-cleanup],
+              AC_HELP_STRING([--enable-assembly-cleanup],
+                             [remove unneeded assembler instructions (default enabled for x86)]),
+              [], [if test x$host_cpu_class = xi386; then
+                     enable_assembly_cleanup=yes
+                   else
+                     enable_assembly_cleanup=no
+                   fi])
+
+AC_MSG_CHECKING([assembler cleanup])
+if test x$enable_assembly_cleanup = xyes; then
+  assembly_cleanup_script=./i486-cleanup.pl
+else
+  assembly_cleanup_script=
+fi
+AC_MSG_RESULT([$enable_assembly_cleanup])
+AC_SUBST(assembly_cleanup_script)
+
+
+# TODO: finish this
+AC_ARG_ENABLE([assembly-optimization],
+              AC_HELP_STRING([--enable-assembly-optimization],
+                             [reorder assembly instructions (x86 only; default is no]),
+              [], [enable_assembly_optimization=no])
+
+AC_MSG_CHECKING([assembly optimization])
+if test x$enable_assembly_optimization = xyes; then
+  assembly_optimization_script=./i486-optimize.pl
+else
+  assembly_optimization_script=
+fi
+AC_MSG_RESULT($enable_assembly_optimization)
+AC_SUBST(assembly_optimization_script)
 
 AC_ARG_ENABLE([debug],
 	      AC_HELP_STRING([--enable-debug],
