@@ -1,11 +1,14 @@
-        --enable-native should only be present where it's available
-        and perhaps should default to whatever is fastest (e.g., I
-        believe it's faster to run native in 32-bit mode on an x86_64
-        than it is to run non-native in 64-bit mode on an x86_64, although
-        I haven't yet timed them)
+        cleanup and optimize shouldn't be done via environment variables;
+        they should be done with AC_ARG_ENABLE and default to be turned on
+        on the architectures where they work (and should be made to work on
+        the architectures they support)
 
         only invoke the x86 cleanup & optimize when compiling for an
         x86 architecture
+
+                can probably write cleanup scripts for other architectures,
+                don't think it's worth doing optimize though (which may no
+                longer be a good idea w/ newer compilers)
 
         Fix i486-cleanup.pl and i486-optimize.pl for all x86 targets
         (including Mac OS X)
@@ -18,6 +21,9 @@
 
         	figure out *exactly* which options should be available
         	via configure
+
+        Not sure what we should do with x86_64 machines; need to know more
+        about what the popular distributions do
 
 	Figure out exactly which variables Makefile.common.in sets, then
 	get rid of Makefile.common.in

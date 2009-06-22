@@ -64,15 +64,26 @@ AC_SUBST(host_cpu_class)
 
 AC_ARG_ENABLE([native],
 	      AC_HELP_STRING([--enable-native],
-			     [native or nonnative (default is native)]),
-	      [var_native=$enable_native], [var_native=yes] )
-if test "$var_native" = "yes"; then
+			     [recompile into x86 code (default enabled for x86)]),
+	      [], [if test x$host_cpu_class = xi386; then
+                     enable_native=yes
+                   else
+                     enable_native=no
+                   fi])
+
+AC_MSG_CHECKING([native support])
+if test x$enable_native = xyes; then
+  if test x$host_cpu_class != xi386; then
+    AC_MSG_ERROR([Can't build native on non-x86])
+  fi
   HOST_NATIVE="native/i386"
   NONNATIVE=""
 else
   HOST_NATIVE="native/null"
   NONNATIVE="#define NONNATIVE"
 fi
+AC_MSG_RESULT([$enable_native])
+
 AC_SUBST(NONNATIVE)
 AC_SUBST(HOST_NATIVE)
 

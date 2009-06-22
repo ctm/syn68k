@@ -20,7 +20,7 @@ make it so Syn68k builds on a few more platforms than it did.  There's
 still a lot of cruft that can be removed and still a bunch of gotchas
 that require special command line arguments to the configuration
 utility, but at least there are enough variants that can be built to
-show that both big-endian (e.g., PPC) and little-endian (e.g. i386, x86_64),
+show that both big-endian (e.g., PowerPC) and little-endian (e.g. i386, x86_64),
 32-bit and 64-bit, native (i386-only) and non-native versions work.
 
 On i386 Fedora systems (tested on 9 and 11), this version of Syn68k
@@ -51,9 +51,10 @@ currently have to override the cleanup script, since the stock script
   make
   make install        
 
-To compile syn68k on PPC Mac OS X (tested under 10.5.7), you must explicitly
-request the non-native port (the default is to try to build the native
-backend even on architectures where it's not supported--bad default!)
+To compile syn68k on PowerPC Mac OS X (tested under 10.5.7), you must
+explicitly request the non-native port (the default is to try to build
+the native backend even on architectures where it's not supported--bad
+default!)
 
   ./autogen.sh
   ./configure --disable-native
