@@ -41,6 +41,13 @@ esac
 
 AC_SUBST(host_cpu_class)
 
+# See lengthy explanation in runtime/Makefile.am for dce_fixup explanation
+
+if test x$host_cpu = xx86_64; then
+  dce_fixup=-fno-dce
+fi
+
+AC_SUBST(dce_fixup)
 
 AC_MSG_CHECKING([Syn68k C flags (TODO: FIXME)])
 SYN68K_CFLAGS="${SYN68K_CFLAGS--O2 -fomit-frame-pointer}"

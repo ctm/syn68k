@@ -9,6 +9,21 @@ SYN68K_CFLAGS=@SYN68K_CFLAGS@
 CLEANUP=@assembly_cleanup_script@
 OPTIMIZE=@assembly_optimization_script@
 
+# The way we use labels in our assembler is out of spec.  The gcc info
+# pages say that you're not allowed to jump between labels of asm.
+# Historically, however, we chose not to put everything into a single
+# function and then jump about within spec.  IIRC, that was either due
+# to the compilation time and memory consumption to be excessive
+# and/or due to us running into compiler bugs.  This was all back
+# around 1995 though and we have more memory and better compilers.  As
+# such, it may make sense to re-evaluate the decision to split all the
+# opcodes into separate functions.  However, until we do that, we need
+# to deal with the fact that some dead-code-elimination (DCE)
+# optimizations will cause our trickery to fail.  As such, we include
+# "-fno-dce" in the architectures where we know we're going to have trouble.
+
+dce_fixup=@dce_fixup@
+
 AM_CFLAGS = -DRUNTIME
 
 LOCAL_INCLUDES =
@@ -62,7 +77,7 @@ syn68k.o: syn68k.c
 	outgoing=;\
 	$(CC) -maccumulate-outgoing-args -c -x c /dev/null 2> /dev/null \
             && outgoing=-maccumulate-outgoing-args; \
-	$(CC) -S $(SYN68K_CFLAGS) -Wall -static -fno-defer-pop -Wno-unused\
+	$(CC) -S $(SYN68K_CFLAGS) $(dce_fixup) -Wall -static -fno-defer-pop -Wno-unused\
 		$(LOCAL_INCLUDES) $$outgoing syn68k.c -o ./syn68k.s
 	if [ x"$(CLEANUP)" != x ] ; then \
 		$(PERL) $(srcdir)/$(CLEANUP) < syn68k.s > syn68k.s.new && \
