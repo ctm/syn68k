@@ -1,5 +1,3 @@
-# $Id: configure.ac 72 2004-12-28 15:57:12Z ctm $
-
 AC_INIT(syn68k, 1.0, ctm@ardi.com)
 AM_INIT_AUTOMAKE
 
@@ -14,9 +12,6 @@ AM_PROG_AS
 
 AC_CHECK_PROG([PERL], [perl], [perl])
 AC_ARG_VAR([PERL], [perl for preening assembly])
-
-#SUBDIRS="syngen runtime test profile" 
-#configdirs="syngen runtime test profile" 
 
 AC_CANONICAL_BUILD
 AC_CANONICAL_HOST
@@ -64,7 +59,7 @@ AC_SUBST(host_cpu_class)
 
 AC_ARG_ENABLE([native],
 	      AC_HELP_STRING([--enable-native],
-			     [recompile into x86 code (default enabled for x86)]),
+			  [recompile into x86 code (default enabled for x86)]),
 	      [], [if test x$host_cpu_class = xi386; then
                      enable_native=yes
                    else
@@ -98,8 +93,6 @@ else
 fi
 AC_SUBST(DEBUGFLAG)
 
-#AC_MSG_NOTICE([])
-
 AC_ARG_WITH(ccrversion,
 [  --with-ccrversion=<ccr8>
    Specify ccr version],
@@ -113,9 +106,6 @@ case "$ccrversion" in
 	CCRFLAG="" ;;
 esac
 
-# Checks for libraries.
-#AC_CHECK_LIB([], [])
-
 # Checks for header files.
 AC_HEADER_STDC
 AC_CHECK_HEADERS([stddef.h stdlib.h string.h sys/param.h unistd.h stdint.h])
@@ -128,7 +118,8 @@ AC_C_VOLATILE
 
 AC_LTDL_SYMBOL_USCORE
 if test x"$ac_cv_sys_symbol_underscore" = xyes ; then
-  AC_DEFINE(HAVE_SYMBOL_UNDERSCORE, 1, [Define if C symbols have leading underscores])
+  AC_DEFINE(HAVE_SYMBOL_UNDERSCORE, 1,
+           [Define if C symbols have leading underscores])
 fi
 
 # Checks for library functions.
@@ -155,13 +146,6 @@ AC_TYPE_UINT32_T
 AC_TYPE_INT64_T
 AC_TYPE_UINT64_T
 
-#if test -n "$configdirs"; then
-#  AC_CONFIG_SUBDIRS($configdirs)
-#fi
-
-#AC_SUBST(SUBDIRS)
-
-
 # The following is taken from wine-0.9.25's configure.ac
 
 AC_SUBST(EXECSTACK,"")
@@ -184,6 +168,5 @@ AC_CONFIG_FILES([Makefile
                   runtime/Makefile
                   runtime/native/i386/Makefile
 		  include/syn68k_private.h])
-dnl                  runtime/native/null/Makefile
 
 AC_OUTPUT
