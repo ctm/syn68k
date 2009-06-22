@@ -1,3 +1,5 @@
+SUBDIRS = native/i386
+
 lib_LIBRARIES = libsyn68k.a
 include_HEADERS = ../include/syn68k_public.h
 

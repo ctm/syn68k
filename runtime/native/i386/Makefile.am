@@ -1,7 +1,13 @@
+# Although this is nominally processed by automake, it's really a bunch
+# of stuff we do by hand that we never converted to the proper automake
+# method
+
 CC_FOR_BUILD=@CC_FOR_BUILD@
 CFLAGS_FOR_BUILD=@CFLAGS_FOR_BUILD@
 
 LOCAL_INCLUDES =
+
+CLEANFILES = obj-stmp *.o
 
 runtimedir = $(top_srcdir)/runtime
 
