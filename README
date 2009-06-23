@@ -1,36 +1,44 @@
 Syn68k is a "synthetic CPU" that executes Motorola 68LC040
 instructions, either via interpretation or via compilation into Intel
-ia32 instructions.  It was originally written to allow Executor (a
-Macintosh emulator) to run on platforms that didn't contain a 680x0
-CPU.  Executor first ran on the Sun-3, and then on NeXT computers.
+(32-bit) x86 instructions.  It was originally written to allow
+Executor (a Macintosh emulator) to run on platforms that didn't
+contain a 680x0 CPU.  Executor first ran on the Sun-3, and then on
+NeXT computers.
 
 Syn68k has not been actively worked on since about 1995.  When it was
 originally written, there were a bunch of alterable variables in
 various Makefiles that allowed us to build Syn68k for many different
 architectures with a few different features.
 
-In late 2003 we did a partial conversion from our home-grown build
-system to the GNU build system.  The result was a Syn68k that could be
-built with the then current version of gcc but basically only for the
-i386 architecture using the native code back-end.  That's basically the
-state Syn68k was in when I put the code on github in September 2006.
+In late 2003 we did a partial conversion from our build system to the
+GNU build system.  The result was a Syn68k that could be built with
+the then current version of gcc but basically only for the i386
+architecture using the native code back-end.  That's basically the
+state Syn68k was in when I put the code on GitHub in September 2008.
 
 In June 2009, I've been able to scrape together a little free time and
-make it so Syn68k builds on a few more platforms than it did.  There's
-still a lot of cruft that can be removed and still a bunch of gotchas
-that require special command line arguments to the configuration
-utility, but at least there are enough variants that can be built to
-show that both big-endian (e.g., PowerPC) and little-endian (e.g. i386, x86_64),
-32-bit and 64-bit, native (i386-only) and non-native versions work.
+make it so Syn68k builds on a few more platforms than it did when I
+first put it on GitHub.  There's still a lot of cruft that can be
+removed, but at least there are enough variants that can be built to
+show that both big-endian (e.g., PowerPC) and little-endian
+(e.g. i386, x86_64), 32-bit and 64-bit, native (i386-only) and
+non-native versions work.
 
-On i386 Fedora systems (tested on 9 and 11), this version of Syn68k
-compiles and produces a libsyn68k.a that works with Executor.
-
-To compile syn68k on a 32-bit i386 system, try
+To compile syn68k, try
 
   ./autogen.sh
   ./configure
   make
+
+To test syn68k, run test/syngentest and compare the output to
+test/output/10000.  It should be the same, assuming the same block of
+memory can be obtained for the test.  If you want to be more thorough,
+you can use other command line options and compare the results to
+other files, as described in test/output/README.
+
+If you plan on building Executor, you'll need to put Syn68k where it
+can be found during Executor's build.  The easiest way is with
+
   make install
 
 To compile a 32-bit syn68k on an x86_64 system, make sure you have all
@@ -42,52 +50,13 @@ glibc-devel.i386 and libgcc.i386) then try this hack
   make
   make install
 
-To compile syn68k on Intel Mac OS X (tested under 10.5.7), you
-currently have to override the cleanup script, since the stock script
-(i486-cleanup.pl) will consume all of syn68k.s.
-
-  ./autogen.sh
-  CLEANUP='' ./configure
-  make
-  make install        
-
-To compile syn68k on PowerPC Mac OS X (tested under 10.5.7), you must
-explicitly request the non-native port (the default is to try to build
-the native backend even on architectures where it's not supported--bad
-default!)
-
-  ./autogen.sh
-  ./configure --disable-native
-  make
-  make install
-
-It's possible to compile a 64-bit version of Syn68k on an x86_64
-(which won't work with Executor, AFAIK), but you currently need to
-manually adjust SYN68K_CFLAGS (at least Fedora 10's gcc 4.3.2 20081105
-(Red Hat 4.3.2-7)) due to a bug that allows "dead code elimination" to
-eliminate updates to a global register.
-
-  ./autogen.sh
-  SYN68K_CFLAGS='-O2 -fomit-frame-pointer -fno-dce' ./configure --disable-native
-  make
-  # No point to installing it, since Executor doesn't run in 64-bit mode
-
-To test syn68k, run test/syngentest and compare the output to
-test/output/10000.  It should be the same, assuming the same block of
-memory can be obtained for the test.  If you want to be more thorough,
-you can use other command line options and compare the results to
-other files, as described in test/output/README.
-
-Performance nit:
-
-The code in runtime/i486-cleanup.pl no longer gets rid of all the
-cruft in the trailer (except under Mac OS X, where it gets rid of way
-too much code).  It's quite possible that the code in
-runtime/i486-optimize.pl doesn't do the right thing either.
+It's possible to compile a 64-bit version of Syn68k on an x86_64, but
+such a version won't work with Executor yet (and will not use native
+x86 instructions).
 
 My email address is still <ctm@ardi.com>, although ARDI itself is
 defunct.  I get a ridiculous amount of spam and will quite possibly
-not see email addressed to me.  I'm ctm on github (http://github.com)
+not see email addressed to me.  I'm ctm on GitHub (http://github.com)
 and typically check my email there once a day.
 
 --Cliff Matthews

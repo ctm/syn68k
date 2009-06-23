@@ -6,13 +6,13 @@
 # aligned optimally.
 
 # Delete the header for each function
-if (/^\.globl _?s68k_handle_opcode_0x/ .. /^[#\/]APP$/)
+if (/^\.globl _?s68k_handle_opcode_0x/ .. /^[#\/]APP$|^_?S68K_HANDLE_0x....:$/)
 {
-    print if (/^[#\/]APP/ || /^L/);
+    print if (/^[#\/]APP/ || /^L/ || /^_?S68K_HANDLE_0x....:$/);
 }
 
 # Delete the trailer for each function
-elsif (/^_S68K_DONE_WITH/ .. /^\s*ret$/)
+elsif (/_S68K_DONE_WITH/ .. /^\s*ret$|^\s*jmp\s+_s68k_handle_opcode_dummy$/)
 {
     print if (!/\s*movl %ebp,%esp$/
 	      && !/\s*leal\s*(-?\d+)?\(%ebp\),%esp$/
@@ -20,7 +20,8 @@ elsif (/^_S68K_DONE_WITH/ .. /^\s*ret$/)
               && !/\s*popl/
               && !/\s*ret$/
               && !/^_S68K_DONE_WITH/
-              && !/s68k_handle_opcode/);
+              && !/s68k_handle_opcode/
+              && !/^\s*jmp\s+_s68k_handle_opcode_dummy$/);
 }
 elsif (/^\s*lods/)
 {
