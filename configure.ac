@@ -1,13 +1,14 @@
 AC_INIT(syn68k, 1.0, ctm@ardi.com)
+LT_INIT
 AM_INIT_AUTOMAKE
 
+AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_SRCDIR([syngen/main.c])
 AC_CONFIG_HEADERS([include/config.h])
 
 # Checks for programs.
 AC_PROG_CC
 AM_PROG_CC_C_O
-AC_PROG_RANLIB
 AM_PROG_AS
 
 AC_CHECK_PROG([PERL], [perl], [perl])

@@ -42,8 +42,13 @@ can be found during Executor's build.  The easiest way is with
   make install
 
 To compile a 32-bit syn68k on an x86_64 system, make sure you have all
-the 32-bit libraries you need (on Fedora 10 I needed to install
-glibc-devel.i386 and libgcc.i386) then try this hack
+the 32-bit libraries you need:
+
+    On Fedora 10 I needed to install glibc-devel.i386 and libgcc.i386
+    On Fedora 11 I needed glibc-devel.i586 and libgcc.i586
+    On Fedora 12 I needed the .i686 versions of those packages
+
+Once you have those install, try this:
 
   ./autogen.sh
   CC='gcc -m32' ./configure --build=i686-pc-linux-gnu --host=i686-pc-linux-gnu
