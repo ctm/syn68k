@@ -7,6 +7,7 @@ AC_CONFIG_SRCDIR([syngen/main.c])
 AC_CONFIG_HEADERS([include/config.h])
 
 # Checks for programs.
+AC_PROG_LIBTOOL
 AC_PROG_CC
 AM_PROG_CC_C_O
 AM_PROG_AS
