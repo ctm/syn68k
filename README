@@ -1,3 +1,12 @@
+========================================================================
+Mac OS X 10.6 (Snow Leopard) note:  by default gcc now creates 64-bit
+binaries, which means the version of Syn68k that will be built won't work
+with Executor.  The "-m32" command line option does the right thing, so it
+should be possible to get Syn68k (and Executor) to work on Snow Leopard
+again, but I don't know that I'll have much time for it.
+========================================================================
+
+
 Syn68k is a "synthetic CPU" that executes Motorola 68LC040
 instructions, either via interpretation or via compilation into Intel
 (32-bit) x86 instructions.  It was originally written to allow
