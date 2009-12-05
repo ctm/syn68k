@@ -26,6 +26,34 @@ dce_fixup=@dce_fixup@
 
 AM_CFLAGS = -DRUNTIME
 
+DIST_SOURCES = 68k.defines.scm 68k.scm alloc.c backpatch.c block.c \
+               blockinfo.c callback.c checksum.c deathqueue.c destroyblock.c \
+	       diagnostics.c dosinterrupts.c fold.pl hash.c i486-cleanup.pl \
+	       i486-optimize.pl init.c interrupt.c native.c opcode_dummy.c \
+               profile.c rangetree.c recompile.c reg sched.pl syn68k_header.c \
+	       translate.c trap.c x86_recog.pl \
+\
+               include/alloc.h \
+	       include/backpatch.h include/block.h include/blockinfo.h \
+	       include/callback.h include/ccfuncs.h include/checksum.h \
+               include/deathqueue.h include/destroyblock.h \
+               include/diagnostics.h include/hash.h include/interrupt.h \
+	       include/mapping.h include/native.h include/profile.h \
+	       include/rangetree.h include/recompile.h include/translate.h \
+	       include/trap.h \
+\
+	       native/i386/analyze.c native/i386/host-native.c \
+	       native/i386/host-native.h native/i386/i386-aux.c \
+	       native/i386/i386-aux.h native/i386/main.c \
+	       native/i386/process.c native/i386/process.h \
+	       native/i386/template.c native/i386/template.h \
+	       native/i386/xlate-aux.c native/i386/xlate-aux.h \
+	       native/i386/xlate.c native/i386/xlate.h \
+	       native/i386/xlatemain.c native/i386/xlatetable.c \
+\
+	       native/null/Makefile native/null/host-native.h \
+               native/null/host-xlate.h
+
 LOCAL_INCLUDES =
 
 LOCAL_INCLUDES += -I$(srcdir)/include \
@@ -98,3 +126,7 @@ syn68k.c mapindex.c mapinfo.c profileinfo.gz:	../syngen/syngen syn68k_header.c 6
 	fi
 	../syngen/syngen -v 68k.scm
 	gzip -1f profileinfo
+
+clean-local:
+	-rm -rf native 68k.defines.scm 68k.scm mapinfo.c syn68k.c mapindex.c \
+                profileinfo.gz syn68k_header.c bucket.c
