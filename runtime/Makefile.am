@@ -128,5 +128,12 @@ syn68k.c mapindex.c mapinfo.c profileinfo.gz:	../syngen/syngen syn68k_header.c 6
 	gzip -1f profileinfo
 
 clean-local:
-	-rm -rf native 68k.defines.scm 68k.scm mapinfo.c syn68k.c mapindex.c \
-                profileinfo.gz syn68k_header.c bucket.c
+	-rm -rf mapinfo.c syn68k.c mapindex.c \
+                profileinfo.gz bucket.c native/i386/asmdata.h \
+                native/i386/i386-isa.h native/i386/subdir-stmp \
+                native/i386/host-xlate.c native/i386/src-stmp \
+                native/i386/i386_stubs native/i386/template \
+                native/i386/host-xlate.h native/i386/xlate
+	if [ "$(srcdir)" != "." ]; then \
+	  rm -f 68k.scm syn68k_header.c 68k.defines.scm; \
+	fi
