@@ -150,7 +150,7 @@ AC_TYPE_SIZE_T
 AC_C_VOLATILE
 
 AC_LTDL_SYMBOL_USCORE
-if test x"$ac_cv_sys_symbol_underscore" = xyes ; then
+if test x"$lt_cv_sys_symbol_underscore" = xyes ; then
   AC_DEFINE(HAVE_SYMBOL_UNDERSCORE, 1,
            [Define if C symbols have leading underscores])
 fi
