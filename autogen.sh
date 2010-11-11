@@ -4,7 +4,7 @@
 
 set -o errexit -o nounset -o noclobber
 
-libtoolize
+glibtoolize
 aclocal
 autoheader
 automake --add-missing

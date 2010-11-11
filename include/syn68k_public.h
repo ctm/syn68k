@@ -7,12 +7,15 @@
 /* Decide whether we are big or little endian here.  Add more machines as
  * they are supported.
  */
+
+/* DO NOT COMMIT THE || 1 below or it will screw others. */
+
 #if !defined(BIGENDIAN) && !defined(LITTLEENDIAN)
 # if defined(__BIG_ENDIAN__) || defined(m68k) || defined(mc68000) \
      || defined(sparc) || defined(powerpc) || defined (__ppc__)
 #  define BIGENDIAN  /* ARDI naming convention, why rock the boat? */
 # elif defined(__alpha) || defined(i860) || defined(vax) || defined(i386) \
-     || defined(__x86_64)
+     || defined(__x86_64) || 1
 #  define LITTLEENDIAN
 # else
 #  error "Unknown CPU type"
@@ -30,7 +33,8 @@
  * alpha can get by, for now.
  */
 
-#if !defined (QUADALIGN)
+/* DO NOT COMMIT the && 0 below or it will screw others */
+#if !defined (QUADALIGN) && 0
 # if defined(sparc) || /* defined(__alpha) || */ defined (i860) || defined(mips)
 #  define QUADALIGN
 # elif !defined(m68k) && !defined(mc68000) && !defined(i386) \

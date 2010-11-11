@@ -22,7 +22,9 @@
 #elif defined(__x86_64)
 # define GLOBAL_REGISTER_DECLS register const uint16 *code asm ("%r12");
 #else
-# error "Choose a global register to hold the current synthetic PC.  Make sure it is saved by the normal calling convention."
+/* DO NOT COMMIT THIS.  IT IS FOR ARM ONLY, but I DON'T KNOW THE PREPROCESSOR SYMBOL */
+# define GLOBAL_REGISTER_DECLS register const uint16 *code asm ("%r11");
+// # error "Choose a global register to hold the current synthetic PC.  Make sure it is saved by the normal calling convention."
 #endif
 
 
