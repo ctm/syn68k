@@ -8,20 +8,16 @@ if I can use autoreconf to do the right thing.
 Mac OS X 10.6 notes:
 Xcode: 3.2.3 64-bit Xcode IDE: 1688.0, Xcode Core: 1691.0, ToolSupport: 1591.0
 
-PATH="/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"
-
-CC='gcc -m32 -fno-stack-check -fno-stack-protector' ../configure
-
-
+  PATH="/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+  ./autogen.sh
+  mkdir build
+  cd build
+  CC='gcc -m32 -fno-stack-check -fno-stack-protector' ../configure
+  make
+  cd test
+  ./syngentest
 
 ========================================================================
-Mac OS X 10.6 (Snow Leopard) note:  by default gcc now creates 64-bit
-binaries, which means the version of Syn68k that will be built won't work
-with Executor.  The "-m32" command line option does the right thing, so it
-should be possible to get Syn68k (and Executor) to work on Snow Leopard
-again, but I don't know that I'll have much time for it.
-========================================================================
-
 
 Syn68k is a "synthetic CPU" that executes Motorola 68LC040
 instructions, either via interpretation or via compilation into Intel
