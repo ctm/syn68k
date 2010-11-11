@@ -1,3 +1,19 @@
+This README is from the ancient_hackage branch where I'm trying to
+figure out just how far I got with Syn68k for the iPad before I
+dropped it.  Much of the info in this README will be incorrect.
+
+I hacked autogen.sh to usee glibtoolize --force, but I should see
+if I can use autoreconf to do the right thing.
+
+Mac OS X 10.6 notes:
+Xcode: 3.2.3 64-bit Xcode IDE: 1688.0, Xcode Core: 1691.0, ToolSupport: 1591.0
+
+PATH="/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+
+CC='gcc -m32 -fno-stack-check -fno-stack-protector' ../configure
+
+
+
 ========================================================================
 Mac OS X 10.6 (Snow Leopard) note:  by default gcc now creates 64-bit
 binaries, which means the version of Syn68k that will be built won't work
